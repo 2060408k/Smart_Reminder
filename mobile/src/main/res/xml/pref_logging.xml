@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference android:title="@string/pref_log_view_reminder_count_title"
+                android:key="@string/view_reminder_count_preference_key" />
+
+    <Preference android:title="@string/pref_log_print_reminders_log_title"
+                android:key="@string/print_reminder_log_key" />
+
+    <Preference android:title="@string/pref_log_print_prompts_log_title"
+                android:key="@string/print_prompt_log_key" />
+
+    <Preference android:title="@string/pref_log_print_watch_log_title"
+                android:key="@string/print_watch_log_key" />
+
+</PreferenceScreen>

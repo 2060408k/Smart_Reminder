@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="match_parent"
+              android:background="@color/cs3GreenDark3">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Reminders"
+            android:textColor="@color/White"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/viewReminderList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="@drawable/view_reminders_row_divider"
+        android:dividerHeight="1dp"
+        android:layout_weight=".60"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".20"
+        android:background="@color/cs3Green">
+
+        <TextView
+            android:id="@+id/viewBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textColor="@color/dark_red"
+            android:drawablePadding="4dp"
+            android:drawableLeft="@mipmap/ic_nav_left"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

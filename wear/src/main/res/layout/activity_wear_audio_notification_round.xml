@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/White">
+
+    <RelativeLayout
+        android:id="@+id/reminderNotificationTitleCont"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".30"
+        android:background="@color/cs3Orange">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REMINDER"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15">
+
+        <TextView
+            android:id="@+id/notificationTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have an Audio Reminder"
+            android:layout_centerInParent="true"
+            android:textColor="@color/cs2Green"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".55"
+        android:orientation="horizontal"
+        android:paddingTop="4dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".50"
+            android:paddingRight="4dp">
+
+
+            <TextView
+                android:id="@+id/audioCancelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:drawableTop="@mipmap/ic_audio_close"
+                android:textColor="@color/Black"
+                android:layout_alignParentRight="true"
+                android:textAlignment="center"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".50"
+            android:paddingLeft="4dp">
+
+
+            <TextView
+                android:id="@+id/audioPlayBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Play"
+                android:drawableTop="@mipmap/ic_audio_play"
+                android:textColor="@color/Black"
+                android:textAlignment="center"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

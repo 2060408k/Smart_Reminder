@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp">
+
+        <!-- Title -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_weight=".70">
+
+                <TextView
+                    android:id="@+id/scheduleRowTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="false"
+                    android:text="EVENT"
+                    android:textColor="@color/cs1Green"
+                    android:textSize="24sp"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".15">
+
+                <TextView
+                    android:id="@+id/scheduleRowEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="false"
+                    android:layout_centerInParent="true"
+                    android:drawableTop="@drawable/ic_schedule_row_edit"
+                    android:text="Edit"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".15">
+
+                <TextView
+                    android:id="@+id/scheduleRowDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableTop="@drawable/ic_schedule_row_delete"
+                    android:text="Delete"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!-- Name -->
+        <RelativeLayout
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Location -->
+        <RelativeLayout
+            android:id="@+id/scheduleRowLocationCont"
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Event After -->
+        <RelativeLayout
+            android:id="@+id/scheduleRowEventAfterCont"
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowEventAfter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event After:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Date -->
+        <RelativeLayout
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Time -->
+        <RelativeLayout
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Duration -->
+        <RelativeLayout
+            android:id="@+id/scheduleRowDurationCont"
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Notification -->
+        <RelativeLayout
+            android:id="@+id/scheduleRowNotificationCont"
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notification:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Notes -->
+        <RelativeLayout
+            android:id="@+id/scheduleRowNotesCont"
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notes:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Repeating Days -->
+        <RelativeLayout
+            android:id="@+id/scheduleRowRepeatCont"
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowRepeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repeating Days:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Repating Weeks -->
+        <RelativeLayout
+            android:id="@+id/scheduleRowRepeatWeeksCont"
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowRepeatWeeks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weeks to Repeat:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <!-- Prompt Level -->
+        <RelativeLayout
+            android:id="@+id/scheduleRowPromptLevelCont"
+            style="@style/scheduleRowSpacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/scheduleRowPromptLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subtlety Level:"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

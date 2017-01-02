@@ -1,0 +1,192 @@
+<RelativeLayout style="@style/fragBgND"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="highway62.reminderapp.fragments.NDEventTitleFragment">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            style="@style/innerCardPadding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Event Title and Navigation -->
+            <LinearLayout
+                style="@style/fragNdNavBarTitleMarginBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Back Navigation -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15">
+
+                    <TextView
+                        android:id="@+id/frag_nd_backBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableTop="@drawable/ic_nav_back"
+                        android:text="Back"/>
+
+                </RelativeLayout>
+
+                <!-- Title -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".70"
+                    android:orientation="horizontal">
+
+                    <!-- Title text -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/frag_nd_title_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/frag_nd_date_gen"
+                            android:textColor="@color/gs5"
+                            android:textSize="24sp"/>
+
+                        <ImageView
+                            style="@style/fragNdNavBarTitleIconMargin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_nd_title_text"
+                            android:src="@drawable/ic_prompt_add_up_calendar"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- Forward Navigation -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15">
+
+                    <TextView
+                        android:id="@+id/frag_nd_nextBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableTop="@drawable/ic_nav_next"
+                        android:text="Next"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <!-- Seperator -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    style="@style/seperator"
+                    android:layout_width="match_parent"/>
+
+            </RelativeLayout>
+
+            <!-- Subtitle -->
+            <RelativeLayout
+                style="@style/fragNdAboveContentTextMargin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/frag_nd_subtitle_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/frag_nd_date_gen_subtitle"/>
+
+            </RelativeLayout>
+
+            <!-- Event date picker -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <highway62.reminderapp.pickers.DatePicker
+                    android:id="@+id/frag_nd_datePicker"
+                    style="@style/cardMainWidgetPadding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner"/>
+
+            </RelativeLayout>
+
+            <!-- Date Info Text -->
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Day of week -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".33">
+
+                    <TextView
+                        android:id="@+id/date_info_text_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"/>
+
+                </RelativeLayout>
+
+                <!-- When Date is -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".33">
+
+                    <TextView
+                        android:id="@+id/date_info_text_when"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"/>
+
+                </RelativeLayout>
+
+                <!-- The date -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".33">
+
+                    <TextView
+                        android:id="@+id/date_info_text_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

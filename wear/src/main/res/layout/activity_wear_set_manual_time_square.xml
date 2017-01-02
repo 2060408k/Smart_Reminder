@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/cs3Blue"
+              android:orientation="vertical">
+
+    <!-- Choose Time Text -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".20"
+        android:background="@color/White"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Choose Time"
+            android:textColor="@color/cs3Orange"/>
+
+    </RelativeLayout>
+
+    <!-- Time View Pager -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".60"
+        android:orientation="horizontal">
+
+        <!-- Left Arrow -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".20">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_nav_left"/>
+
+        </RelativeLayout>
+
+        <!-- Time Chooser -->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/timeChooser"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".60"/>
+
+        <!-- Right Arrow -->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".20">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_nav_right"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- Cancel -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".20"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/setManualTimeCancelTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

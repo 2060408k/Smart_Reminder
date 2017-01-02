@@ -1,0 +1,29 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- These settings headers are only used on tablets. -->
+
+    <header
+        android:fragment="highway62.reminderapp.adminSettings.SettingsActivity$UIPreferenceFragment"
+        android:title="@string/pref_header_UI"
+        android:icon="@drawable/ic_settings_ui"/>
+
+    <header
+        android:fragment="highway62.reminderapp.adminSettings.SettingsActivity$UPPreferenceFragment"
+        android:icon="@drawable/ic_settings_up"
+        android:title="@string/pref_header_UP"/>
+
+    <header
+        android:fragment="highway62.reminderapp.adminSettings.SettingsActivity$PromptLevelPreferenceFragment"
+        android:icon="@drawable/ic_settings_prompts"
+        android:title="@string/pref_header_Prompts"/>
+
+    <header
+        android:fragment="highway62.reminderapp.adminSettings.SettingsActivity$LoggingOptionsFragment"
+        android:icon="@drawable/ic_settings_log"
+        android:title="@string/pref_header_log"/>
+    <header
+        android:fragment="highway62.reminderapp.adminSettings.SettingsActivity$SmartRemindingFragment"
+        android:icon="@drawable/ic_tab_reminder"
+        android:title="@string/smart_reminder"/>
+
+</preference-headers>

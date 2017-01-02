@@ -1,0 +1,354 @@
+<RelativeLayout style="@style/fragBgND"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="highway62.reminderapp.fragments.NDEventTitleFragment">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            style="@style/innerCardPadding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Event Title and Navigation -->
+            <LinearLayout
+                style="@style/fragNdNavBarTitleMarginBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Back Navigation -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15">
+
+                    <TextView
+                        android:id="@+id/frag_nd_backBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableTop="@drawable/ic_nav_back"
+                        android:text="Back"/>
+
+                </RelativeLayout>
+
+                <!-- Title -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".70"
+                    android:orientation="horizontal">
+
+                    <!-- Title text -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/frag_nd_title_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/frag_nd_event_title_gen"
+                            android:textColor="@color/gs5"
+                            android:textSize="24sp"/>
+
+                        <ImageView
+                            style="@style/fragNdNavBarTitleIconMargin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_nd_title_text"
+                            android:src="@drawable/ic_frag_event_repeat"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- Forward Navigation -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15">
+
+                    <TextView
+                        android:id="@+id/frag_nd_nextBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableTop="@drawable/ic_nav_next"
+                        android:text="Next"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <!-- Seperator -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    style="@style/seperator"
+                    android:layout_width="match_parent"/>
+
+            </RelativeLayout>
+
+            <!-- Repeating Subtitle -->
+            <RelativeLayout
+                style="@style/aboveContentTextMargins"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/frag_nd_subtitle_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/frag_nd_repeat_shopping_subtitle"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+            <!-- Days Grid -->
+            <LinearLayout
+                android:layout_marginTop="12dp"
+                android:id="@+id/frag_bs_event_repeat_days_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Row 1 Mon - Wed -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- MON -->
+                    <RelativeLayout
+                        style="@style/repeatDayGridDayPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".33">
+
+                        <CheckBox
+                            android:id="@+id/frag_bs_event_repeat_check_mon"
+                            style="@style/repeatDayGridCheckSpacing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/frag_bs_event_repeat_mon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_bs_event_repeat_check_mon"
+                            android:text="Mon"/>
+
+                    </RelativeLayout>
+
+                    <!-- TUES -->
+                    <RelativeLayout
+                        style="@style/repeatDayGridDayPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".33">
+
+                        <CheckBox
+                            android:id="@+id/frag_bs_event_repeat_check_tues"
+                            style="@style/repeatDayGridCheckSpacing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/frag_bs_event_repeat_tues"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_bs_event_repeat_check_tues"
+                            android:text="Tues"/>
+
+                    </RelativeLayout>
+
+                    <!-- WED -->
+                    <RelativeLayout
+                        style="@style/repeatDayGridDayPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".33">
+
+                        <CheckBox
+                            android:id="@+id/frag_bs_event_repeat_check_wed"
+                            style="@style/repeatDayGridCheckSpacing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/frag_bs_event_repeat_wed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_bs_event_repeat_check_wed"
+                            android:text="Wed"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- Row 2 Thurs - Sat -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- THUR -->
+                    <RelativeLayout
+                        style="@style/repeatDayGridDayPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".33">
+
+                        <CheckBox
+                            android:id="@+id/frag_bs_event_repeat_check_thur"
+                            style="@style/repeatDayGridCheckSpacing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/frag_bs_event_repeat_thur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_bs_event_repeat_check_thur"
+                            android:text="Thur"/>
+
+                    </RelativeLayout>
+
+                    <!-- FRI -->
+                    <RelativeLayout
+                        style="@style/repeatDayGridDayPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".33">
+
+                        <CheckBox
+                            android:id="@+id/frag_bs_event_repeat_check_fri"
+                            style="@style/repeatDayGridCheckSpacing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/frag_bs_event_repeat_fri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_bs_event_repeat_check_fri"
+                            android:text="Fri"/>
+
+                    </RelativeLayout>
+
+                    <!-- SAT -->
+                    <RelativeLayout
+                        style="@style/repeatDayGridDayPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".33">
+
+                        <CheckBox
+                            android:id="@+id/frag_bs_event_repeat_check_sat"
+                            style="@style/repeatDayGridCheckSpacing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/frag_bs_event_repeat_sat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_bs_event_repeat_check_sat"
+                            android:text="Sat"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- Row 3 Sun -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- PAD LEFT -->
+                    <RelativeLayout
+                        style="@style/repeatDayGridDayPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".33">
+
+                    </RelativeLayout>
+
+                    <!-- SUN -->
+                    <RelativeLayout
+                        style="@style/repeatDayGridDayPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".33">
+
+                        <CheckBox
+                            android:id="@+id/frag_bs_event_repeat_check_sun"
+                            style="@style/repeatDayGridCheckSpacing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/frag_bs_event_repeat_sun"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_bs_event_repeat_check_sun"
+                            android:text="Sun"/>
+
+                    </RelativeLayout>
+
+                    <!-- PAD RIGHT -->
+                    <RelativeLayout
+                        style="@style/repeatDayGridDayPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".33">
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

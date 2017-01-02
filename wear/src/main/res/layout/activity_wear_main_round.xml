@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/mainWearActivityView"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/cs3GreenDark2"
+              android:orientation="vertical">
+
+    <!-- App Name -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".30">
+
+            <TextView
+                android:id="@+id/mainScreenAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="APPLTREE"
+                android:layout_alignParentBottom="false"
+                android:layout_centerInParent="true"
+                android:textColor="@color/White"/>
+
+        </RelativeLayout>
+
+    <!-- Version Text (Either "Quick Reminder" or "Manual Reminder") -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".30"
+        android:orientation="horizontal">
+
+        <!-- Left Nav -->
+        <RelativeLayout
+            android:id="@+id/mainLeftNav"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".10">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_nav_left"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".80">
+
+            <TextView
+                android:id="@+id/mainScreenVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Quick\nReminder"
+                android:textAlignment="center"
+                android:textColor="@color/White"
+                android:textSize="24sp"/>
+
+        </RelativeLayout>
+
+        <!-- Right Nav -->
+        <RelativeLayout
+            android:id="@+id/mainRightNav"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".10">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_nav_right"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".30"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/mainQuickSettingsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".30">
+
+                <TextView
+                    android:id="@+id/quickMinsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30 Mins"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@color/White"/>
+
+            <ImageView
+                android:layout_toLeftOf="@id/quickMinsText"
+                android:id="@+id/mainSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_wear_settings_white"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".70">
+
+            <ImageView
+                android:id="@+id/viewRemindersBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_reminder_wear_small"
+                android:padding="8dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

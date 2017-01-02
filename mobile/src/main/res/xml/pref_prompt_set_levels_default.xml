@@ -1,0 +1,640 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Level 0 Category -->
+    <PreferenceScreen
+        android:key="level_0_category_key"
+        android:persistent="false"
+        android:title="@string/pref_prompt_level_category_0_title">
+
+        <!-- Vibration -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_vib_category_title">
+
+            <!-- Enable -->
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="@string/pref_prompt_level_enable_vib_chk_key_0"
+                android:title="@string/pref_prompt_level_enable_vib_chk_string"/>
+
+            <!-- Vibration Burst Number -->
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_0"
+                android:entries="@array/pref_prompt_level_burst_entries_values"
+                android:entryValues="@array/pref_prompt_level_burst_entries_values"
+                android:key="@string/pref_prompt_level_vib_burst_no_key_0"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_burst_no_string"/>
+
+            <!-- Vibration Burst Time -->
+            <ListPreference
+                android:defaultValue="5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_0"
+                android:entries="@array/pref_prompt_level_burst_time_entries"
+                android:entryValues="@array/pref_prompt_level_burst_time_values"
+                android:key="@string/pref_prompt_level_vib_burst_time_key_0"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_burst_time_string"/>
+
+            <!-- Vibration Length -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_0"
+                android:entries="@array/pref_prompt_level_vibration_length_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_length_values"
+                android:key="@string/pref_prompt_level_vib_length_key_0"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_length_string"/>
+
+            <!-- Repeating -->
+            <CheckBoxPreference
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_0"
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_vib_repeat_key_0"
+                android:title="@string/pref_prompt_level_vib_repeat_string"/>
+
+            <!-- Vibration Repeat Time -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_0"
+                android:entries="@array/pref_prompt_level_vibration_repeat_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_repeat_values"
+                android:key="@string/pref_prompt_level_vib_repeat_time_key_0"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_repeat_time_string"/>
+
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_0"
+                android:entries="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:entryValues="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:key="@string/pref_prompt_level_vib_repeat_cont_chk_key_0"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_repeat_cont_string"/>
+
+        </PreferenceCategory>
+
+        <!-- Sound -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_sound_category_title">
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_enable_sound_chk_key_0"
+                android:title="@string/pref_prompt_level_enable_sound_chk_string"/>
+
+            <!-- Ringtone -->
+            <RingtonePreference
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_0"
+                android:defaultValue="content://settings/system/notification_sound"
+                android:key="@string/pref_prompt_level_ringtone_choice_key_0"
+                android:ringtoneType="notification"
+                android:title="@string/pref_prompt_level_ringtone_choice_string"/>
+
+            <!-- Repeating Checkbox -->
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_0"
+                android:key="@string/pref_prompt_level_ringtone_repeat_key_0"
+                android:title="@string/pref_prompt_level_ringtone_repeat_string"/>
+
+            <!-- Repeating Sound After -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_0"
+                android:entries="@array/pref_prompt_level_vibration_repeat_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_repeat_values"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:key="@string/pref_prompt_level_ringtone_repeat_after_key_0"
+                android:title="@string/pref_prompt_level_ringtone_repeat_after_string"/>
+
+            <!-- No of Times to Repeat Sound -->
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_0"
+                android:entries="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:entryValues="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:key="@string/pref_prompt_level_ringtone_repeat_no_key_0"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_ringtone_repeat_no_string"/>
+
+            <!-- Volume -->
+            <ListPreference
+                android:defaultValue="0"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_0"
+                android:entries="@array/pref_prompt_level_sound_volume_entries"
+                android:entryValues="@array/pref_prompt_level_sound_volume_values"
+                android:key="@string/pref_prompt_level_sound_volume_level_key_0"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_sound_volume_string"/>
+
+        </PreferenceCategory>
+
+        <!-- Visual -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_vis_category_title">
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_enable_vis_chk_key_0"
+                android:title="@string/pref_prompt_level_enable_vis_chk_string"/>
+
+            <!-- Notification -->
+            <ListPreference
+                android:defaultValue="0"
+                android:dependency="@string/pref_prompt_level_enable_vis_chk_key_0"
+                android:entries="@array/pref_prompt_level_visual_entries"
+                android:entryValues="@array/pref_prompt_level_visual_values"
+                android:key="@string/pref_prompt_level_visual_key_0"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_visual_string"/>
+
+        </PreferenceCategory>
+
+    </PreferenceScreen>
+
+    <!-- Level 1 Category -->
+    <PreferenceScreen
+        android:key="level_1_category_key"
+        android:persistent="false"
+        android:title="@string/pref_prompt_level_category_1_title">
+
+        <!-- Vibration -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_vib_category_title">
+
+            <!-- Enable -->
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="@string/pref_prompt_level_enable_vib_chk_key_1"
+                android:title="@string/pref_prompt_level_enable_vib_chk_string"/>
+
+            <!-- Vibration Burst Number -->
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_1"
+                android:entries="@array/pref_prompt_level_burst_entries_values"
+                android:entryValues="@array/pref_prompt_level_burst_entries_values"
+                android:key="@string/pref_prompt_level_vib_burst_no_key_1"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_burst_no_string"/>
+
+            <!-- Vibration Burst Time -->
+            <ListPreference
+                android:defaultValue="5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_1"
+                android:entries="@array/pref_prompt_level_burst_time_entries"
+                android:entryValues="@array/pref_prompt_level_burst_time_values"
+                android:key="@string/pref_prompt_level_vib_burst_time_key_1"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_burst_time_string"/>
+
+            <!-- Vibration Length -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_1"
+                android:entries="@array/pref_prompt_level_vibration_length_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_length_values"
+                android:key="@string/pref_prompt_level_vib_length_key_1"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_length_string"/>
+
+            <!-- Repeating -->
+            <CheckBoxPreference
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_1"
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_vib_repeat_key_1"
+                android:title="@string/pref_prompt_level_vib_repeat_string"/>
+
+            <!-- Vibration Repeat Time -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_1"
+                android:entries="@array/pref_prompt_level_vibration_repeat_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_repeat_values"
+                android:key="@string/pref_prompt_level_vib_repeat_time_key_1"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_repeat_time_string"/>
+
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_1"
+                android:entries="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:entryValues="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:key="@string/pref_prompt_level_vib_repeat_cont_chk_key_1"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_repeat_cont_string"/>
+
+        </PreferenceCategory>
+
+        <!-- Sound -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_sound_category_title">
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_enable_sound_chk_key_1"
+                android:title="@string/pref_prompt_level_enable_sound_chk_string"/>
+
+            <!-- Ringtone -->
+            <RingtonePreference
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_1"
+                android:defaultValue="content://settings/system/notification_sound"
+                android:key="@string/pref_prompt_level_ringtone_choice_key_1"
+                android:ringtoneType="notification"
+                android:title="@string/pref_prompt_level_ringtone_choice_string"/>
+
+            <!-- Repeating Checkbox -->
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_1"
+                android:key="@string/pref_prompt_level_ringtone_repeat_key_1"
+                android:title="@string/pref_prompt_level_ringtone_repeat_string"/>
+
+            <!-- Repeating Sound After -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_1"
+                android:entries="@array/pref_prompt_level_vibration_repeat_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_repeat_values"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:key="@string/pref_prompt_level_ringtone_repeat_after_key_1"
+                android:title="@string/pref_prompt_level_ringtone_repeat_after_string"/>
+
+            <!-- No of Times to Repeat Sound -->
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_1"
+                android:entries="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:entryValues="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:key="@string/pref_prompt_level_ringtone_repeat_no_key_1"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_ringtone_repeat_no_string"/>
+
+            <!-- Volume -->
+            <ListPreference
+                android:defaultValue="0"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_1"
+                android:entries="@array/pref_prompt_level_sound_volume_entries"
+                android:entryValues="@array/pref_prompt_level_sound_volume_values"
+                android:key="@string/pref_prompt_level_sound_volume_level_key_1"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_sound_volume_string"/>
+
+        </PreferenceCategory>
+
+        <!-- Visual -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_vis_category_title">
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_enable_vis_chk_key_1"
+                android:title="@string/pref_prompt_level_enable_vis_chk_string"/>
+
+            <!-- Notification -->
+            <ListPreference
+                android:defaultValue="0"
+                android:dependency="@string/pref_prompt_level_enable_vis_chk_key_1"
+                android:entries="@array/pref_prompt_level_visual_entries"
+                android:entryValues="@array/pref_prompt_level_visual_values"
+                android:key="@string/pref_prompt_level_visual_key_1"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_visual_string"/>
+
+        </PreferenceCategory>
+
+    </PreferenceScreen>
+
+    <!-- Level 2 Category -->
+    <PreferenceScreen
+        android:key="level_2_category_key"
+        android:persistent="false"
+        android:title="@string/pref_prompt_level_category_2_title">
+
+        <!-- Vibration -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_vib_category_title">
+
+            <!-- Enable -->
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="@string/pref_prompt_level_enable_vib_chk_key_2"
+                android:title="@string/pref_prompt_level_enable_vib_chk_string"/>
+
+            <!-- Vibration Burst Number -->
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_2"
+                android:entries="@array/pref_prompt_level_burst_entries_values"
+                android:entryValues="@array/pref_prompt_level_burst_entries_values"
+                android:key="@string/pref_prompt_level_vib_burst_no_key_2"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_burst_no_string"/>
+
+            <!-- Vibration Burst Time -->
+            <ListPreference
+                android:defaultValue="5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_2"
+                android:entries="@array/pref_prompt_level_burst_time_entries"
+                android:entryValues="@array/pref_prompt_level_burst_time_values"
+                android:key="@string/pref_prompt_level_vib_burst_time_key_2"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_burst_time_string"/>
+
+            <!-- Vibration Length -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_2"
+                android:entries="@array/pref_prompt_level_vibration_length_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_length_values"
+                android:key="@string/pref_prompt_level_vib_length_key_2"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_length_string"/>
+
+            <!-- Repeating -->
+            <CheckBoxPreference
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_2"
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_vib_repeat_key_2"
+                android:title="@string/pref_prompt_level_vib_repeat_string"/>
+
+            <!-- Vibration Repeat Time -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_2"
+                android:entries="@array/pref_prompt_level_vibration_repeat_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_repeat_values"
+                android:key="@string/pref_prompt_level_vib_repeat_time_key_2"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_repeat_time_string"/>
+
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_2"
+                android:entries="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:entryValues="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:key="@string/pref_prompt_level_vib_repeat_cont_chk_key_2"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_repeat_cont_string"/>
+
+        </PreferenceCategory>
+
+        <!-- Sound -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_sound_category_title">
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_enable_sound_chk_key_2"
+                android:title="@string/pref_prompt_level_enable_sound_chk_string"/>
+
+            <!-- Ringtone -->
+            <RingtonePreference
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_2"
+                android:defaultValue="content://settings/system/notification_sound"
+                android:key="@string/pref_prompt_level_ringtone_choice_key_2"
+                android:ringtoneType="notification"
+                android:title="@string/pref_prompt_level_ringtone_choice_string"/>
+
+            <!-- Repeating Checkbox -->
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_2"
+                android:key="@string/pref_prompt_level_ringtone_repeat_key_2"
+                android:title="@string/pref_prompt_level_ringtone_repeat_string"/>
+
+            <!-- Repeating Sound After -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_2"
+                android:entries="@array/pref_prompt_level_vibration_repeat_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_repeat_values"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:key="@string/pref_prompt_level_ringtone_repeat_after_key_2"
+                android:title="@string/pref_prompt_level_ringtone_repeat_after_string"/>
+
+            <!-- No of Times to Repeat Sound -->
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_2"
+                android:entries="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:entryValues="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:key="@string/pref_prompt_level_ringtone_repeat_no_key_2"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_ringtone_repeat_no_string"/>
+
+            <!-- Volume -->
+            <ListPreference
+                android:defaultValue="0"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_2"
+                android:entries="@array/pref_prompt_level_sound_volume_entries"
+                android:entryValues="@array/pref_prompt_level_sound_volume_values"
+                android:key="@string/pref_prompt_level_sound_volume_level_key_2"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_sound_volume_string"/>
+
+        </PreferenceCategory>
+
+        <!-- Visual -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_vis_category_title">
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_enable_vis_chk_key_2"
+                android:title="@string/pref_prompt_level_enable_vis_chk_string"/>
+
+            <!-- Notification -->
+            <ListPreference
+                android:defaultValue="0"
+                android:dependency="@string/pref_prompt_level_enable_vis_chk_key_2"
+                android:entries="@array/pref_prompt_level_visual_entries"
+                android:entryValues="@array/pref_prompt_level_visual_values"
+                android:key="@string/pref_prompt_level_visual_key_2"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_visual_string"/>
+
+        </PreferenceCategory>
+
+    </PreferenceScreen>
+
+    <!-- Level 3 Category -->
+    <PreferenceScreen
+        android:key="level_3_category_key"
+        android:persistent="false"
+        android:title="@string/pref_prompt_level_category_3_title">
+
+        <!-- Vibration -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_vib_category_title">
+
+            <!-- Enable -->
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="@string/pref_prompt_level_enable_vib_chk_key_3"
+                android:title="@string/pref_prompt_level_enable_vib_chk_string"/>
+
+            <!-- Vibration Burst Number -->
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_3"
+                android:entries="@array/pref_prompt_level_burst_entries_values"
+                android:entryValues="@array/pref_prompt_level_burst_entries_values"
+                android:key="@string/pref_prompt_level_vib_burst_no_key_3"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_burst_no_string"/>
+
+            <!-- Vibration Burst Time -->
+            <ListPreference
+                android:defaultValue="5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_3"
+                android:entries="@array/pref_prompt_level_burst_time_entries"
+                android:entryValues="@array/pref_prompt_level_burst_time_values"
+                android:key="@string/pref_prompt_level_vib_burst_time_key_3"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_burst_time_string"/>
+
+            <!-- Vibration Length -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_3"
+                android:entries="@array/pref_prompt_level_vibration_length_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_length_values"
+                android:key="@string/pref_prompt_level_vib_length_key_3"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_length_string"/>
+
+            <!-- Repeating -->
+            <CheckBoxPreference
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_3"
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_vib_repeat_key_3"
+                android:title="@string/pref_prompt_level_vib_repeat_string"/>
+
+            <!-- Vibration Repeat Time -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_3"
+                android:entries="@array/pref_prompt_level_vibration_repeat_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_repeat_values"
+                android:key="@string/pref_prompt_level_vib_repeat_time_key_3"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_repeat_time_string"/>
+
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_vib_chk_key_3"
+                android:entries="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:entryValues="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:key="@string/pref_prompt_level_vib_repeat_cont_chk_key_3"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_vib_repeat_cont_string"/>
+
+
+        </PreferenceCategory>
+
+        <!-- Sound -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_sound_category_title">
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_enable_sound_chk_key_3"
+                android:title="@string/pref_prompt_level_enable_sound_chk_string"/>
+
+            <!-- Ringtone -->
+            <RingtonePreference
+                android:defaultValue="content://settings/system/notification_sound"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_3"
+                android:key="@string/pref_prompt_level_ringtone_choice_key_3"
+                android:ringtoneType="notification"
+                android:title="@string/pref_prompt_level_ringtone_choice_string"/>
+
+            <!-- Repeating Checkbox -->
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_3"
+                android:key="@string/pref_prompt_level_ringtone_repeat_key_3"
+                android:title="@string/pref_prompt_level_ringtone_repeat_string"/>
+
+            <!-- Repeating Sound After -->
+            <ListPreference
+                android:defaultValue="0.5"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_3"
+                android:entries="@array/pref_prompt_level_vibration_repeat_entries"
+                android:entryValues="@array/pref_prompt_level_vibration_repeat_values"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:key="@string/pref_prompt_level_ringtone_repeat_after_key_3"
+                android:title="@string/pref_prompt_level_ringtone_repeat_after_string"/>
+
+            <!-- No of Times to Repeat Sound -->
+            <ListPreference
+                android:defaultValue="1"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_3"
+                android:entries="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:entryValues="@array/pref_prompt_level_vib_repeat_no_of_times_entries_values"
+                android:key="@string/pref_prompt_level_ringtone_repeat_no_key_3"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_ringtone_repeat_no_string"/>
+
+            <!-- Volume -->
+            <ListPreference
+                android:defaultValue="0"
+                android:dependency="@string/pref_prompt_level_enable_sound_chk_key_3"
+                android:entries="@array/pref_prompt_level_sound_volume_entries"
+                android:entryValues="@array/pref_prompt_level_sound_volume_values"
+                android:key="@string/pref_prompt_level_sound_volume_level_key_3"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_sound_volume_string"/>
+
+        </PreferenceCategory>
+
+        <!-- Visual -->
+        <PreferenceCategory android:title="@string/pref_prompt_level_vis_category_title">
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="@string/pref_prompt_level_enable_vis_chk_key_3"
+                android:title="@string/pref_prompt_level_enable_vis_chk_string"/>
+
+            <!-- Notification -->
+            <ListPreference
+                android:defaultValue="0"
+                android:dependency="@string/pref_prompt_level_enable_vis_chk_key_3"
+                android:entries="@array/pref_prompt_level_visual_entries"
+                android:entryValues="@array/pref_prompt_level_visual_values"
+                android:key="@string/pref_prompt_level_visual_key_3"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_prompt_level_visual_string"/>
+
+        </PreferenceCategory>
+
+    </PreferenceScreen>
+
+</PreferenceScreen>

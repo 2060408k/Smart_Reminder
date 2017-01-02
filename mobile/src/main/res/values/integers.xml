@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <integer name="prompt_subtlety_no_of_levels">3</integer>
+    
+</resources>

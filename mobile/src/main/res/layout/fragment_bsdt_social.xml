@@ -1,0 +1,644 @@
+<RelativeLayout style="@style/fragBackground"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                tools:context=".fragments.BSFragment">
+
+    <ScrollView
+        android:id="@+id/bsFragRootScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <LinearLayout
+            style="@style/cardHolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- EVENT CARD /////////////////////////////////////////////////////////////////////-->
+            <android.support.v7.widget.CardView
+                style="@style/cardMargins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    style="@style/innerCardPadding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Event Title -->
+                    <LinearLayout
+                        style="@style/innerCardTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_frag_event_title"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@string/frag_nd_event_title_social"
+                                android:textColor="@color/gs5"
+                                android:textSize="18sp"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <!-- Seperator -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            style="@style/seperator"
+                            android:layout_width="match_parent"/>
+
+                    </RelativeLayout>
+
+                    <!-- Event title edit text -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/frag_bs_title_editTxt"
+                            style="@style/cardMainWidgetPadding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#f3f3f3"
+                            android:hint="@string/frag_bsdt_event_title_social_hint"
+                            android:imeOptions="actionDone"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3"
+                            android:textSize="18sp"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- LOCATION CARD /////////////////////////////////////////////////////////////////////-->
+            <android.support.v7.widget.CardView
+                style="@style/cardMargins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    style="@style/innerCardPadding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Event Title -->
+                    <LinearLayout
+                        style="@style/innerCardTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_frag_event_where"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@string/frag_nd_where_social"
+                                android:textColor="@color/gs5"
+                                android:textSize="18sp"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <!-- Seperator -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            style="@style/seperator"
+                            android:layout_width="match_parent"/>
+
+                    </RelativeLayout>
+
+                    <!-- Subtitle -->
+                    <RelativeLayout
+                        style="@style/fragNdAboveContentTextMargin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/frag_nd_subtitle_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/frag_nd_where_social_subtitle"/>
+
+                    </RelativeLayout>
+
+                    <!-- Event title edit text -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/frag_bs_location_editTxt"
+                            style="@style/cardMainWidgetPadding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#f3f3f3"
+                            android:hint="@string/frag_nd_where_social_hint"
+                            android:textSize="18sp"
+                            android:inputType="textMultiLine"
+                            android:maxLines="3"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- DATE CARD /////////////////////////////////////////////////////////////////////-->
+            <android.support.v7.widget.CardView
+                style="@style/cardMargins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    style="@style/innerCardPadding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Date Title -->
+                    <LinearLayout
+                        style="@style/innerCardTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_prompt_add_up_calendar"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/frag_event_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@string/frag_bs_gen_event_date"
+                                android:textColor="@color/gs5"
+                                android:textSize="18sp"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <!-- Seperator -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            style="@style/seperator"
+                            android:layout_width="match_parent"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/aboveContentTextMargins"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/frag_nd_date_social_subtitle"/>
+
+                    </RelativeLayout>
+
+                    <!-- Date Picker -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <highway62.reminderapp.pickers.DatePicker
+                            android:id="@+id/frag_bs_datePicker"
+                            style="@style/cardMainWidgetPadding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:calendarViewShown="false"
+                            android:datePickerMode="spinner"/>
+
+                    </RelativeLayout>
+
+                    <!-- Date Info Text -->
+                    <LinearLayout
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Day of week -->
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".33">
+
+                            <TextView
+                                android:id="@+id/date_info_text_day"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"/>
+
+                        </RelativeLayout>
+
+                        <!-- When Date is -->
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".33">
+
+                            <TextView
+                                android:id="@+id/date_info_text_when"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"/>
+
+                        </RelativeLayout>
+
+                        <!-- The date -->
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".33">
+
+                            <TextView
+                                android:id="@+id/date_info_text_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- TIME CARD //////////////////////////////////////////////////////////////////////-->
+            <android.support.v7.widget.CardView
+                style="@style/cardMargins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    style="@style/innerCardPadding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Time Title -->
+                    <LinearLayout
+                        style="@style/innerCardTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_frag_event_time"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/frag_event_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@string/frag_bs_gen_event_time"
+                                android:textColor="@color/gs5"
+                                android:textSize="18sp"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <!-- Seperator -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            style="@style/seperator"
+                            android:layout_width="match_parent"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/aboveContentTextMargins"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/frag_nd_time_social_subtitle"/>
+
+                    </RelativeLayout>
+
+                    <!-- Time Picker -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <highway62.reminderapp.pickers.TimePicker
+                            android:id="@+id/frag_bs_timePicker"
+                            style="@style/cardMainWidgetPadding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:timePickerMode="spinner"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_marginTop="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/time_info_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- PROMPT LEVEL CARD -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/frag_bs_prompt_level_card"
+                style="@style/cardMargins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    style="@style/innerCardPadding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Level Title -->
+                    <LinearLayout
+                        style="@style/innerCardTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="12dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_frag_event_level2"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@string/frag_nd_prompt_gen"
+                                android:textColor="@color/gs5"
+                                android:textSize="18sp"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <!-- Seperator -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            style="@style/seperator"
+                            android:layout_width="match_parent"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/aboveContentTextMargins"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/frag_nd_prompt_social_subtitle"/>
+
+                    </RelativeLayout>
+
+                    <!-- Level slider -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <SeekBar
+                            android:id="@+id/frag_bs_event_level_seekbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                    <!-- Level Slider Text -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:id="@+id/frag_bs_event_level_text_0"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".20"
+                            android:clickable="true"
+                            android:paddingBottom="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:text="Subtle"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/frag_bs_event_level_text_1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".30"
+                            android:clickable="true"
+                            android:paddingBottom="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:text="|"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/frag_bs_event_level_text_2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".30"
+                            android:clickable="true"
+                            android:paddingBottom="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:text="|"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/frag_bs_event_level_text_3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".20"
+                            android:clickable="true"
+                            android:paddingBottom="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:text="Obvious"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- SAVE REMINDER BUTTON -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp">
+
+                <Button
+                    android:id="@+id/frag_bs_save_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/frag_bs_gen_save_btn_txt"
+                    android:drawableLeft="@drawable/ic_nav_save"
+                    android:drawablePadding="3dp"
+                    android:layout_centerInParent="true"
+                    android:background="@color/cs3Orange"
+                    android:textColor="@color/White"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

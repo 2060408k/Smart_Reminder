@@ -1,0 +1,763 @@
+<resources>
+    <string name="app_name">APPLTREE</string>
+    <string name="title_activity_settings">Settings</string>
+
+
+    <!-- ///////////////////////////// KEYS /////////////////////////////////////////////////////-->
+    <string name="Pref_UI_NDBS_List">PREF_UI_NDBS_CHOSEN</string>
+    <string name="Pref_UI_DT_Switch">PREF_UI_DTREE_ENABLED</string>
+    <string name="Pref_UP_Remote_Switch">PREF_UP_REMOTE_ENABLED</string>
+    <string name="Pref_Prompt_User_Subtlety_Checkbox">PREF_PROMPT_USER_SUBTLETY_ENABLED</string>
+    <string name="Pref_Prompt_Default_User_Subtlety_Level">PREF_PROMPT_DEFAULT_USER_SUBTLETY_LEVEL</string>
+    <string name="Pref_Prompt_Device_List">PREF_PROMPT_DEVICE_CHOSEN</string>
+    <string name="Pref_Prompt_Default_Levels_Checkbox">PREF_PROMPT_DEFAULT_LEVELS_ENABLED</string>
+    <string name="Pref_Prompt_Default_Levels">PREF_PROMPT_OPEN_DEFAULT_LEVELS</string>
+    <string name="Pref_Prompt_UP_Levels">PREF_PROMPT_OPEN_UP_LEVELS</string>
+    <string name="Pref_Prompt_Reminder_Levels">PREF_PROMPT_OPEN_REMINDER_LEVELS</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- //////////////////////////// FRAGMENT TAGS /////////////////////////////////////////////-->
+    <!-- Broad Shallow Tags -->
+    <string name="bsdt_intro_tag">BSDT_INTRO_TAG</string>
+    <string name="bsdt_shopping_tag">BSDT_SHOP_TAG</string>
+    <string name="bsdt_appt_tag">BSDT_APPT_TAG</string>
+    <string name="bsdt_medic_tag">BSDT_MEDIC_TAG</string>
+    <string name="bsdt_social_tag">BSDT_SOCIAL_TAG</string>
+    <string name="bsdt_daily_tag">BSDT_DAILY_TAG</string>
+    <string name="bsdt_birthday_tag">BSDT_BIRTH_TAG</string>
+    <string name="bs_gen_tag">BS_GEN_TAG</string>
+
+    <!-- Narrow Deep Tags -->
+    <string name="nddt_intro_tag">NDDT_INTRO_TAG</string>
+    <string name="nd_title_tag">ND_TITLE_TAG</string>
+    <string name="nd_date_tag">ND_DATE_TAG</string>
+    <string name="nd_time_tag">ND_TIME_TAG</string>
+    <string name="nd_duration_tag">ND_DURATION_TAG</string>
+    <string name="nd_notification_tag">ND_NOTIFICATION_TAG</string>
+    <string name="nd_notes_tag">ND_NOTES_TAG</string>
+    <string name="nd_repeat_tag">ND_REPEAT_TAG</string>
+    <string name="nd_reminder_level_tag">ND_REMINDER_LEVEL_TAG</string>
+    <string name="nd_where_tag">ND_WHERE_TAG</string>
+    <string name="nd_event_after_tag">ND_EVENT_AFTER_TAG</string>
+
+    <!-- Schedule Tags -->
+    <string name="schedule_calendar_tag">SCHEDULE_CALENDAR_TAG</string>
+    <string name="schedule_view_day_tag">SCHEDULE_VIEW_DAY_TAG</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!--////////////////////////////// User Interface ///////////////////////////////////////////-->
+    <!--Smart Reminder-->
+    <string name="smart_reminder">Smart Reminder</string>
+    <!-- UI settings Header -->
+    <string name="pref_header_UI">User Interface</string>
+
+    <!-- Narrow Deep Broad Shallow (NDBS) List Title -->
+    <string name="pref_UI_NDBS_title">Set UI Variant</string>
+
+    <!-- NDBS List -->
+    <string-array name="pref_UI_NDBS_entries">
+        <item>Broad Shallow</item>
+        <item>Narrow Deep</item>
+    </string-array>
+
+    <!-- NDBS Values -->
+    <string-array name="pref_UI_NDBS_values">
+        <item>0</item> <!-- BS -->
+        <item>1</item> <!-- ND -->
+    </string-array>
+
+    <!-- Decision Tree (DT) Title -->
+    <string name="pref_UI_DT_title">Decision Tree</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- //////////////////////////// Unsolicited Prompts ///////////////////////////////////////-->
+
+    <!-- UP Settings Header -->
+    <string name="pref_header_UP">Unsolicited Prompts</string>
+
+    <!-- UP Preferences -->
+    <string name="pref_UP_headerAdd">Add Prompt</string>
+    <string name="pref_Smart_reminding">smart_suggestion_preference</string>
+    <string name="pref_UP_headerView">View Prompts</string>
+    <!-- Remote UP Switch Title -->
+    <string name="pref_UP_remote_switch_title">Enable Remote UPs</string>
+
+    <!-- Add Prompt Chooce Date Title -->
+    <string name="pref_UP_add_prompt_choose_date_title">Choose Date</string>
+
+    <!-- Add Prompt Set Specific Content Title -->
+    <string name="pref_UP_add_prompt_specific_content_title">Set Specific Content</string>
+
+    <!-- Add Prompt Set Specific Content Edit Text Hint -->
+    <string name="pref_UP_add_prompt_specific_content_hint">Enter Text...</string>
+
+    <!-- Add Prompt Time Picker Title -->
+    <string name="pref_UP_add_prompt_choose_time_title">Choose Time</string>
+
+    <!-- Add Prompt Default Content -->
+    <string name="pref_UP_add_prompt_default_content">Do you need to set any reminders?</string>
+
+    <!-- View Prompt Delete Dialog Title -->
+    <string name="pref_UP_view_prompt_delete_dialog_title">Confirm Deletion</string>
+
+    <!-- View Prompt Delete Title -->
+    <string name="pref_UP_view_prompt_multi_delete_title">Delete</string>
+
+    <!-- View Prompt Edit Levels Button Text -->
+    <string name="pref_UP_view_prompt_edit_level_button_edit">Edit</string>
+    <string name="pref_UP_view_prompt_edit_level_button_save">Save</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- //////////////////////////// Prompts Levels ////////////////////////////////////////////-->
+
+    <!-- Prompt Level Settings Header -->
+    <string name="pref_header_Prompts">Prompt Levels</string>
+
+    <!-- Prompt General Category Title -->
+    <string name="pref_prompt_general_category_title">General</string>
+
+    <!-- User Set Subtlety Checkbox Title and Summary -->
+    <string name="pref_prompt_user_subtlety_checkbox_title">Allow User to Set Subtlety</string>
+    <string name="pref_prompt_user_subtlety_checkbox_summary">User can manually set the subtlety of reminders</string>
+
+    <!-- Default Prompt Level if User Set Subtlety unchecked -->
+    <string name="pref_prompt_default_prompt_level_title">Default User Subtlety Level</string>
+
+    <!-- Entries and Values for Defualt User Subtlety Level -->
+    <string-array name="pref_prompt_default_prompt_level_entries_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- Device List Title -->
+    <string name="pref_prompt_device_list_title">Set Prompt Devices</string>
+
+    <!-- Device List Entries -->
+    <string-array name="pref_prompt_device_entries">
+        <item>Phone</item>
+        <item>Phone and Watch</item>
+    </string-array>
+
+    <!-- Device List Entries -->
+    <string-array name="pref_prompt_remind_time_entries">
+        <item>Morning</item>
+        <item>Lunch</item>
+        <item>Afternoon</item>
+        <item>Night</item>
+    </string-array>
+
+    <!-- Device List Values -->
+    <string-array name="pref_prompt_device_values">
+        <item>0</item> <!-- Phone -->
+        <item>1</item> <!-- Phone and Watch -->
+    </string-array>
+
+    <!-- Prompt Level Category Title -->
+    <string name="pref_prompt_level_category_title">Modality Levels</string>
+
+    <!-- Same UP and Reminder Levels Checkbox Title -->
+    <string name="pref_prompt_default_levels_checkbox_title">Use Default Levels</string>
+
+    <!-- Set Default Prompt Levels Header -->
+    <string name="pref_prompt_default_levels_header">Set Default Levels</string>
+
+    <!-- Set Unsolicited Prompt Levels Header -->
+    <string name="pref_prompt_UP_levels_header">Set UP Levels</string>
+
+    <!-- Set Reminder Levels Header -->
+    <string name="pref_prompt_reminder_levels_header">Set Reminder Levels</string>
+
+    <!-- Intent Extras for Launching Prompt Level Activity -->
+    <string name="pref_prompt_modality_level_intent_key">TYPE</string>
+    <string name="pref_prompt_modality_level_intent_value_default">DEFAULT</string>
+    <string name="pref_prompt_modality_level_intent_value_UP">UP</string>
+    <string name="pref_prompt_modality_level_intent_value_reminder">REMINDER</string>
+
+    <!-- Set Prompt Levels /////////////////////////////////////////-->
+
+    <!-- Category Titles -->
+    <string name="pref_prompt_level_category_0_title">Level: 0</string>
+    <string name="pref_prompt_level_category_1_title">Level: 1</string>
+    <string name="pref_prompt_level_category_2_title">Level: 2</string>
+    <string name="pref_prompt_level_category_3_title">Level: 3</string>
+
+    <string name="pref_prompt_level_vib_category_title">Vibration</string>
+    <string name="pref_prompt_level_sound_category_title">Sound</string>
+    <string name="pref_prompt_level_vis_category_title">Visual</string>
+
+    <!-- Enable Prompt Settings Keys for Default, UP, Reminder, Levels 0-3 -->
+    <string name="pref_prompt_level_enable_vib_chk_key_0">ENABLE_VIBRARTION_0</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_1">ENABLE_VIBRARTION_1</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_2">ENABLE_VIBRARTION_2</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_3">ENABLE_VIBRARTION_3</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_0u">ENABLE_VIBRARTION_0u</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_1u">ENABLE_VIBRARTION_1u</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_2u">ENABLE_VIBRARTION_2u</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_3u">ENABLE_VIBRARTION_3u</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_0r">ENABLE_VIBRARTION_0r</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_1r">ENABLE_VIBRARTION_1r</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_2r">ENABLE_VIBRARTION_2r</string>
+    <string name="pref_prompt_level_enable_vib_chk_key_3r">ENABLE_VIBRARTION_3r</string>
+    <string name="pref_prompt_level_enable_vib_chk_string">Enable Vibration</string>
+
+    <string name="pref_prompt_level_enable_sound_chk_key_0">ENABLE_SOUND_0</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_1">ENABLE_SOUND_1</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_2">ENABLE_SOUND_2</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_3">ENABLE_SOUND_3</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_0u">ENABLE_SOUND_0u</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_1u">ENABLE_SOUND_1u</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_2u">ENABLE_SOUND_2u</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_3u">ENABLE_SOUND_3u</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_0r">ENABLE_SOUND_0r</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_1r">ENABLE_SOUND_1r</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_2r">ENABLE_SOUND_2r</string>
+    <string name="pref_prompt_level_enable_sound_chk_key_3r">ENABLE_SOUND_3r</string>
+    <string name="pref_prompt_level_enable_sound_chk_string">Enable Sound</string>
+
+    <string name="pref_prompt_level_enable_vis_chk_key_0">ENABLE_VISUAL_0</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_1">ENABLE_VISUAL_1</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_2">ENABLE_VISUAL_2</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_3">ENABLE_VISUAL_3</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_0u">ENABLE_VISUAL_0u</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_1u">ENABLE_VISUAL_1u</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_2u">ENABLE_VISUAL_2u</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_3u">ENABLE_VISUAL_3u</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_0r">ENABLE_VISUAL_0r</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_1r">ENABLE_VISUAL_1r</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_2r">ENABLE_VISUAL_2r</string>
+    <string name="pref_prompt_level_enable_vis_chk_key_3r">ENABLE_VISUAL_3r</string>
+    <string name="pref_prompt_level_enable_vis_chk_string">Enable Visual</string>
+
+    <string name="pref_prompt_level_vib_burst_no_string">Number of Bursts</string>
+    <string name="pref_prompt_level_vib_burst_no_key_0">VIB_BURST_NO_0</string>
+    <string name="pref_prompt_level_vib_burst_no_key_1">VIB_BURST_NO_1</string>
+    <string name="pref_prompt_level_vib_burst_no_key_2">VIB_BURST_NO_2</string>
+    <string name="pref_prompt_level_vib_burst_no_key_3">VIB_BURST_NO_3</string>
+    <string name="pref_prompt_level_vib_burst_no_key_0u">VIB_BURST_NO_0u</string>
+    <string name="pref_prompt_level_vib_burst_no_key_1u">VIB_BURST_NO_1u</string>
+    <string name="pref_prompt_level_vib_burst_no_key_2u">VIB_BURST_NO_2u</string>
+    <string name="pref_prompt_level_vib_burst_no_key_3u">VIB_BURST_NO_3u</string>
+    <string name="pref_prompt_level_vib_burst_no_key_0r">VIB_BURST_NO_0r</string>
+    <string name="pref_prompt_level_vib_burst_no_key_1r">VIB_BURST_NO_1r</string>
+    <string name="pref_prompt_level_vib_burst_no_key_2r">VIB_BURST_NO_2r</string>
+    <string name="pref_prompt_level_vib_burst_no_key_3r">VIB_BURST_NO_3r</string>
+
+    <!-- Burst No Entries -->
+    <string-array name="pref_prompt_level_burst_entries_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string name="pref_prompt_level_vib_burst_time_string">Time Between Bursts</string>
+    <string name="pref_prompt_level_vib_burst_time_key_0">VIB_BURST_TIME_0</string>
+    <string name="pref_prompt_level_vib_burst_time_key_1">VIB_BURST_TIME_1</string>
+    <string name="pref_prompt_level_vib_burst_time_key_2">VIB_BURST_TIME_2</string>
+    <string name="pref_prompt_level_vib_burst_time_key_3">VIB_BURST_TIME_3</string>
+    <string name="pref_prompt_level_vib_burst_time_key_0u">VIB_BURST_TIME_0u</string>
+    <string name="pref_prompt_level_vib_burst_time_key_1u">VIB_BURST_TIME_1u</string>
+    <string name="pref_prompt_level_vib_burst_time_key_2u">VIB_BURST_TIME_2u</string>
+    <string name="pref_prompt_level_vib_burst_time_key_3u">VIB_BURST_TIME_3u</string>
+    <string name="pref_prompt_level_vib_burst_time_key_0r">VIB_BURST_TIME_0r</string>
+    <string name="pref_prompt_level_vib_burst_time_key_1r">VIB_BURST_TIME_1r</string>
+    <string name="pref_prompt_level_vib_burst_time_key_2r">VIB_BURST_TIME_2r</string>
+    <string name="pref_prompt_level_vib_burst_time_key_3r">VIB_BURST_TIME_3r</string>
+
+    <!-- Burst Time Entries -->
+    <string-array name="pref_prompt_level_burst_time_entries">
+        <item>1 Second</item>
+        <item>2 Seconds</item>
+        <item>3 Seconds</item>
+        <item>4 Seconds</item>
+        <item>5 Seconds</item>
+        <item>6 Seconds</item>
+        <item>7 Seconds</item>
+    </string-array>
+
+    <!-- Burst Time Values -->
+    <string-array name="pref_prompt_level_burst_time_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string name="pref_prompt_level_vib_length_string">Vibration Length</string>
+    <string name="pref_prompt_level_vib_length_key_0">VIB_LENGTH_0</string>
+    <string name="pref_prompt_level_vib_length_key_1">VIB_LENGTH_1</string>
+    <string name="pref_prompt_level_vib_length_key_2">VIB_LENGTH_2</string>
+    <string name="pref_prompt_level_vib_length_key_3">VIB_LENGTH_3</string>
+    <string name="pref_prompt_level_vib_length_key_0u">VIB_LENGTH_0u</string>
+    <string name="pref_prompt_level_vib_length_key_1u">VIB_LENGTH_1u</string>
+    <string name="pref_prompt_level_vib_length_key_2u">VIB_LENGTH_2u</string>
+    <string name="pref_prompt_level_vib_length_key_3u">VIB_LENGTH_3u</string>
+    <string name="pref_prompt_level_vib_length_key_0r">VIB_LENGTH_0r</string>
+    <string name="pref_prompt_level_vib_length_key_1r">VIB_LENGTH_1r</string>
+    <string name="pref_prompt_level_vib_length_key_2r">VIB_LENGTH_2r</string>
+    <string name="pref_prompt_level_vib_length_key_3r">VIB_LENGTH_3r</string>
+
+    <!-- vibration Length Entries -->
+    <string-array name="pref_prompt_level_vibration_length_entries">
+        <item>0.25 Seconds</item>
+        <item>0.5 Seconds</item>
+        <item>1 Seconds</item>
+        <item>2 Seconds</item>
+        <item>3 Seconds</item>
+        <item>4 Seconds</item>
+    </string-array>
+
+    <!-- Vibration Length Values -->
+    <string-array name="pref_prompt_level_vibration_length_values">
+        <item>0.25</item>
+        <item>0.5</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string name="pref_prompt_level_vib_repeat_string">Repeat Vibration</string>
+    <string name="pref_prompt_level_vib_repeat_key_0">VIB_REPEAT_0</string>
+    <string name="pref_prompt_level_vib_repeat_key_1">VIB_REPEAT_1</string>
+    <string name="pref_prompt_level_vib_repeat_key_2">VIB_REPEAT_2</string>
+    <string name="pref_prompt_level_vib_repeat_key_3">VIB_REPEAT_3</string>
+    <string name="pref_prompt_level_vib_repeat_key_0u">VIB_REPEAT_0u</string>
+    <string name="pref_prompt_level_vib_repeat_key_1u">VIB_REPEAT_1u</string>
+    <string name="pref_prompt_level_vib_repeat_key_2u">VIB_REPEAT_2u</string>
+    <string name="pref_prompt_level_vib_repeat_key_3u">VIB_REPEAT_3u</string>
+    <string name="pref_prompt_level_vib_repeat_key_0r">VIB_REPEAT_0r</string>
+    <string name="pref_prompt_level_vib_repeat_key_1r">VIB_REPEAT_1r</string>
+    <string name="pref_prompt_level_vib_repeat_key_2r">VIB_REPEAT_2r</string>
+    <string name="pref_prompt_level_vib_repeat_key_3r">VIB_REPEAT_3r</string>
+
+    <string name="pref_prompt_level_vib_repeat_time_string">Repeat After</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_0">VIB_REPEAT_TIME_0</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_1">VIB_REPEAT_TIME_1</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_2">VIB_REPEAT_TIME_2</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_3">VIB_REPEAT_TIME_3</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_0u">VIB_REPEAT_TIME_0u</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_1u">VIB_REPEAT_TIME_1u</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_2u">VIB_REPEAT_TIME_2u</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_3u">VIB_REPEAT_TIME_3u</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_0r">VIB_REPEAT_TIME_0r</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_1r">VIB_REPEAT_TIME_1r</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_2r">VIB_REPEAT_TIME_2r</string>
+    <string name="pref_prompt_level_vib_repeat_time_key_3r">VIB_REPEAT_TIME_3r</string>
+
+    <!-- Vibration Repeat Entries -->
+    <string-array name="pref_prompt_level_vibration_repeat_entries">
+        <item>15s</item>
+        <item>30s</item>
+        <item>45s</item>
+        <item>1min</item>
+        <item>5min</item>
+        <item>10min</item>
+    </string-array>
+
+    <!-- Vibration Repeat Values -->
+    <string-array name="pref_prompt_level_vibration_repeat_values">
+        <item>0.25</item>
+        <item>0.5</item>
+        <item>0.75</item>
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+
+    <string name="pref_prompt_level_vib_repeat_cont_string">No. of Times to Repeat</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_0">VIB_CONTINUOUS_REPEAT_0</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_1">VIB_CONTINUOUS_REPEAT_1</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_2">VIB_CONTINUOUS_REPEAT_2</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_3">VIB_CONTINUOUS_REPEAT_3</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_0u">VIB_CONTINUOUS_REPEAT_0u</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_1u">VIB_CONTINUOUS_REPEAT_1u</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_2u">VIB_CONTINUOUS_REPEAT_2u</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_3u">VIB_CONTINUOUS_REPEAT_3u</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_0r">VIB_CONTINUOUS_REPEAT_0r</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_1r">VIB_CONTINUOUS_REPEAT_1r</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_2r">VIB_CONTINUOUS_REPEAT_2r</string>
+    <string name="pref_prompt_level_vib_repeat_cont_chk_key_3r">VIB_CONTINUOUS_REPEAT_3r</string>
+
+    <string-array name="pref_prompt_level_vib_repeat_no_of_times_entries_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <!-- Alarm Chooser -->
+    <string name="pref_prompt_level_ringtone_choice_string">Choose Sound</string>
+    <string name="pref_prompt_level_ringtone_choice_key_0">RINGTONE_CHOICE_0</string>
+    <string name="pref_prompt_level_ringtone_choice_key_1">RINGTONE_CHOICE_1</string>
+    <string name="pref_prompt_level_ringtone_choice_key_2">RINGTONE_CHOICE_2</string>
+    <string name="pref_prompt_level_ringtone_choice_key_3">RINGTONE_CHOICE_3</string>
+    <string name="pref_prompt_level_ringtone_choice_key_0u">RINGTONE_CHOICE_0u</string>
+    <string name="pref_prompt_level_ringtone_choice_key_1u">RINGTONE_CHOICE_1u</string>
+    <string name="pref_prompt_level_ringtone_choice_key_2u">RINGTONE_CHOICE_2u</string>
+    <string name="pref_prompt_level_ringtone_choice_key_3u">RINGTONE_CHOICE_3u</string>
+    <string name="pref_prompt_level_ringtone_choice_key_0r">RINGTONE_CHOICE_0r</string>
+    <string name="pref_prompt_level_ringtone_choice_key_1r">RINGTONE_CHOICE_1r</string>
+    <string name="pref_prompt_level_ringtone_choice_key_2r">RINGTONE_CHOICE_2r</string>
+    <string name="pref_prompt_level_ringtone_choice_key_3r">RINGTONE_CHOICE_3r</string>
+
+    <!-- Repeat Sound -->
+    <string name="pref_prompt_level_ringtone_repeat_string">Repeat Sound</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_0">SOUND_REPEAT_0</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_1">SOUND_REPEAT_1</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_2">SOUND_REPEAT_2</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_3">SOUND_REPEAT_3</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_0u">SOUND_REPEAT_0u</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_1u">SOUND_REPEAT_1u</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_2u">SOUND_REPEAT_2u</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_3u">SOUND_REPEAT_3u</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_0r">SOUND_REPEAT_0r</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_1r">SOUND_REPEAT_1r</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_2r">SOUND_REPEAT_2r</string>
+    <string name="pref_prompt_level_ringtone_repeat_key_3r">SOUND_REPEAT_3r</string>
+
+    <!-- Repeat Sound After -->
+    <string name="pref_prompt_level_ringtone_repeat_after_string">Repeat Sound After</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_0">SOUND_REPEAT_AFTER_0</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_1">SOUND_REPEAT_AFTER_1</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_2">SOUND_REPEAT_AFTER_2</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_3">SOUND_REPEAT_AFTER_3</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_0u">SOUND_REPEAT_AFTER_0u</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_1u">SOUND_REPEAT_AFTER_1u</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_2u">SOUND_REPEAT_AFTER_2u</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_3u">SOUND_REPEAT_AFTER_3u</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_0r">SOUND_REPEAT_AFTER_0r</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_1r">SOUND_REPEAT_AFTER_1r</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_2r">SOUND_REPEAT_AFTER_2r</string>
+    <string name="pref_prompt_level_ringtone_repeat_after_key_3r">SOUND_REPEAT_AFTER_3r</string>
+
+    <!-- Repeat Sound No of Times -->
+    <string name="pref_prompt_level_ringtone_repeat_no_string">No. of Times to Repeat</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_0">SOUND_REPEAT_NO_0</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_1">SOUND_REPEAT_NO_1</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_2">SOUND_REPEAT_NO_2</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_3">SOUND_REPEAT_NO_3</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_0u">SOUND_REPEAT_NO_0u</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_1u">SOUND_REPEAT_NO_1u</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_2u">SOUND_REPEAT_NO_2u</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_3u">SOUND_REPEAT_NO_3u</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_0r">SOUND_REPEAT_NO_0r</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_1r">SOUND_REPEAT_NO_1r</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_2r">SOUND_REPEAT_NO_2r</string>
+    <string name="pref_prompt_level_ringtone_repeat_no_key_3r">SOUND_REPEAT_NO_3r</string>
+
+    <string name="pref_prompt_level_sound_volume_string">Volume</string>
+    <string name="pref_prompt_level_sound_volume_level_key_0">SOUND_VOLUME_LEVEL_0</string>
+    <string name="pref_prompt_level_sound_volume_level_key_1">SOUND_VOLUME_LEVEL_1</string>
+    <string name="pref_prompt_level_sound_volume_level_key_2">SOUND_VOLUME_LEVEL_2</string>
+    <string name="pref_prompt_level_sound_volume_level_key_3">SOUND_VOLUME_LEVEL_3</string>
+    <string name="pref_prompt_level_sound_volume_level_key_0u">SOUND_VOLUME_LEVEL_0u</string>
+    <string name="pref_prompt_level_sound_volume_level_key_1u">SOUND_VOLUME_LEVEL_1u</string>
+    <string name="pref_prompt_level_sound_volume_level_key_2u">SOUND_VOLUME_LEVEL_2u</string>
+    <string name="pref_prompt_level_sound_volume_level_key_3u">SOUND_VOLUME_LEVEL_3u</string>
+    <string name="pref_prompt_level_sound_volume_level_key_0r">SOUND_VOLUME_LEVEL_0r</string>
+    <string name="pref_prompt_level_sound_volume_level_key_1r">SOUND_VOLUME_LEVEL_1r</string>
+    <string name="pref_prompt_level_sound_volume_level_key_2r">SOUND_VOLUME_LEVEL_2r</string>
+    <string name="pref_prompt_level_sound_volume_level_key_3r">SOUND_VOLUME_LEVEL_3r</string>
+
+    <!-- Sound Volume Entries -->
+    <string-array name="pref_prompt_level_sound_volume_entries">
+        <item>Quiet</item>
+        <item>Medium</item>
+        <item>Loud</item>
+    </string-array>
+
+    <!-- Sound Volume Values -->
+    <string-array name="pref_prompt_level_sound_volume_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Visual -->
+    <string name="pref_prompt_level_visual_string">Notification</string>
+    <string name="pref_prompt_level_visual_key_0">VISUAL_CHOICE_0</string>
+    <string name="pref_prompt_level_visual_key_1">VISUAL_CHOICE_1</string>
+    <string name="pref_prompt_level_visual_key_2">VISUAL_CHOICE_2</string>
+    <string name="pref_prompt_level_visual_key_3">VISUAL_CHOICE_3</string>
+    <string name="pref_prompt_level_visual_key_0u">VISUAL_CHOICE_0u</string>
+    <string name="pref_prompt_level_visual_key_1u">VISUAL_CHOICE_1u</string>
+    <string name="pref_prompt_level_visual_key_2u">VISUAL_CHOICE_2u</string>
+    <string name="pref_prompt_level_visual_key_3u">VISUAL_CHOICE_3u</string>
+    <string name="pref_prompt_level_visual_key_0r">VISUAL_CHOICE_0r</string>
+    <string name="pref_prompt_level_visual_key_1r">VISUAL_CHOICE_1r</string>
+    <string name="pref_prompt_level_visual_key_2r">VISUAL_CHOICE_2r</string>
+    <string name="pref_prompt_level_visual_key_3r">VISUAL_CHOICE_3r</string>
+
+    <!-- Visual Choice Entries -->
+    <string-array name="pref_prompt_level_visual_entries">
+        <item>Notification Bar</item>
+        <item>Full Screen</item>
+    </string-array>
+
+    <!-- Visual Choice Values-->
+    <string-array name="pref_prompt_level_visual_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+
+    <string name="actionbar_settings_add_UP_title">Add Prompt</string>
+    <string name="actionbar_settings_view_UP_title">View Prompts</string>
+    <string name="actionbar_settings_prompt_levels_title_default">Default Modality Levels</string>
+    <string name="actionbar_settings_prompt_levels_title_UP">UP Modality Levels</string>
+    <string name="actionbar_settings_prompt_levels_title_reminder">Reminder Modality Levels</string>
+    <string name="title_activity_settings_prompt_level">Prompt Levels</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- ///////////////////////////// Logging //////////////////////////////////////////////////-->
+    <!-- LOG Settings Header -->
+    <string name="pref_header_log">Logs</string>
+    <string name="pref_log_view_reminder_count_title">View Reminder Count</string>
+    <string name="pref_log_print_reminders_log_title">Print Reminders Log</string>
+    <string name="pref_log_print_prompts_log_title">Print Prompts Log</string>
+    <string name="pref_log_print_watch_log_title">Print Watch Log</string>
+
+
+    <!-- Logging Dialog Preference Keys -->
+    <string name="view_reminder_count_preference_key">view_reminder_count_dialog_preference</string>
+    <string name="print_reminder_log_key">print_reminder_log_dialog_preference</string>
+    <string name="print_prompt_log_key">print_prompt_log_dialog_preference</string>
+    <string name="print_watch_log_key">print_watch_log_dialog_preference</string>
+
+    <!-- Dialog Strings -->
+    <string name="view_log_count_reminder_text">Total no. of reminders set: </string>
+    <string name="view_log_count_prompt_text">Total no. of UPs set: </string>
+    <string name="print_log_title_text">Click Below to Print</string>
+    <string name="print_log_progress_text">Progress:</string>
+    <string name="print_log_location">Documents/</string>
+    <string name="print_log_reminder_dir">AppleTree_Reminder_Logs</string>
+    <string name="print_log_prompt_dir">AppleTree_UPrompt_Logs</string>
+    <string name="print_log_watch_dir">AppleTree_Watch_Logs</string>
+    <string name="print__watch_log_title_text">Click Below to Print Watch Logs</string>
+
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+    <!-- ///////////////////////////// Action Bar Strings ///////////////////////////////////////-->
+    <string name="actionbar_admin_settings">Admin Settings</string>
+    <string name="actionbar_admin_settings_password">1234</string>
+    <string name="actionbar_dt_back_text_top">START</string>
+    <string name="actionbar_dt_back_text_bottom">AGAIN</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- ///////////////////////////////// Tab Widget ///////////////////////////////////////////-->
+    <string name="reminder_tab_text">Set Reminder</string>
+    <string name="schedule_tab_text">View Schedule</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- /////////////////////////// ND FRAGMENT TYPES //////////////////////////////////////////-->
+    <string name="nd_frag_type_gen">ND_GENERIC</string>
+    <string name="nd_frag_type_shop">ND_SHOP</string>
+    <string name="nd_frag_type_appt">ND_APPT</string>
+    <string name="nd_frag_type_birth">ND_BIRTHDAY</string>
+    <string name="nd_frag_type_medic">ND_MEDICATION</string>
+    <string name="nd_frag_type_daily">ND_DAILY</string>
+    <string name="nd_frag_type_social">ND_SOCIAL</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- ///////////////////////// BS FRAGMENT UIs //////////////////////////////////////////////-->
+    <string name="frag_bs_gen_event_title">EVENT</string>
+    <string name="frag_bs_gen_event_title_hint">Enter the name of the event...</string>
+
+    <string name="frag_bs_gen_event_date">DATE</string>
+    <string name="frag_bs_gen_date_text">Enter the date of the event</string>
+    <string name="frag_bs_date_info_txt">Selected Date:</string>
+
+    <string name="frag_bs_gen_event_time">TIME</string>
+    <string name="frag_bs_gen_time_text">What time does the event take place?</string>
+
+    <string name="frag_bs_gen_event_length">DURATION</string>
+    <string name="frag_bs_gen_event_length_text">Set event duration?</string>
+
+    <!-- Event Duration Spinner -->
+    <string-array name="frag_bs_gen_event_duration_array">
+        <item>Minutes</item>
+        <item>Hours</item>
+        <item>Days</item>
+        <item>Weeks</item>
+    </string-array>
+
+    <string name="frag_bs_gen_event_before">NOTIFICATION</string>
+    <string name="frag_bs_gen_event_before_text">When would you like to be reminded?</string>
+    <string name="frag_bs_gen_event_dialog_title">Choose a Time</string>
+    <string name="frag_notification_warning">Warning: notification is set before current time</string>
+
+    <!-- Event Notification Time Spinner -->
+    <string-array name="frag_bs_gen_event_notification_array">
+        <item>At time of event</item>
+        <item>30 mins before</item>
+        <item>1 hour before</item>
+        <item>1 day before</item>
+        <item>Custom time</item>
+    </string-array>
+
+    <!-- Event Notification Custom Time Spinner -->
+    <string-array name="frag_bs_gen_event_notification_custom_array">
+        <item>Minutes before</item>
+        <item>Hours before</item>
+        <item>Days before</item>
+        <item>Weeks before</item>
+    </string-array>
+
+    <string name="frag_bs_gen_event_notes">NOTES</string>
+    <string name="frag_bs_gen_event_notes_text">Enter any notes about the event...</string>
+
+    <string name="frag_bs_gen_event_repeat">REPEAT</string>
+    <string name="frag_bs_gen_event_repeat_text">Set as repeated event?</string>
+    <string name="frag_bs_gen_event_repeat_choose_days_txt">Choose days to repeat</string>
+    <string name="frag_bs_gen_event_repeat_choose_weeks_txt">How long would you like this to repeat?</string>
+
+    <!-- Event Repeat Weeks Spinner -->
+    <string-array name="frag_bs_gen_event_repeat_weeks_array">
+        <item>These days only</item>
+        <item>+ 1 week</item>
+        <item>+ 2 weeks</item>
+        <item>+ 3 weeks</item>
+        <item>Custom weeks</item>
+    </string-array>
+
+    <string name="frag_bs_gen_event_level">REMINDER LEVEL</string>
+    <string name="frag_bs_gen_event_level_text">Set the subtley level of the reminder</string>
+
+    <string name="frag_bs_gen_save_btn_txt">SAVE REMINDER</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- ///////////////////////// NDDT FRAGMENT UIs ////////////////////////////////////////////-->
+    <!-- TITLE -->
+    <string name="frag_nd_event_title_gen">EVENT</string>
+    <string name="frag_nd_event_subtitle_gen">Enter the name of the event:</string>
+    <string name="frag_nd_event_title_gen_hint">Event name...</string>
+    <string name="frag_nd_event_title_appt">APPOINTMENT</string>
+    <string name="frag_nd_event_subtitle_appt">Enter the name of the appointment:</string>
+    <string name="frag_nd_event_title_appt_hint">Appointment name...</string>
+    <string name="frag_nd_event_title_shopping">SHOPPING</string>
+    <string name="frag_nd_event_subtitle_shopping">Enter the location of your shopping trip:</string>
+    <string name="frag_nd_event_title_shopping_hint">Shopping trip location...</string>
+    <string name="frag_nd_event_title_birthday">BIRTHDAY</string>
+    <string name="frag_nd_event_subtitle_birthday">Enter the name of whose birthday it is:</string>
+    <string name="frag_nd_event_title_birthday_hint">Enter name...</string>
+    <string name="frag_nd_event_title_medic">MEDICATION</string>
+    <string name="frag_nd_event_subtitle_medic">Enter the type of medication:</string>
+    <string name="frag_nd_event_title_medic_hint">Medication type...</string>
+    <string name="frag_nd_event_title_daily">DAILY TASK</string>
+    <string name="frag_nd_event_subtitle_daily">Enter the name of your daily task</string>
+    <string name="frag_nd_event_title_daily_hint">Task name...</string>
+    <string name="frag_nd_event_title_social">SOCIAL EVENT</string>
+    <string name="frag_nd_event_subtitle_social">Enter the name of your social event:</string>
+    <string name="frag_nd_event_title_social_hint">Social event name...</string>
+
+    <!-- DATE -->
+    <string name="frag_nd_date_gen">DATE</string>
+    <string name="frag_nd_date_gen_subtitle">Enter the date of the event:</string>
+    <string name="frag_nd_date_appt_subtitle">Enter the date of your appointment:</string>
+    <string name="frag_nd_date_birth_subtitle">Enter the date of the birthday:</string>
+    <string name="frag_nd_date_medic_subtitle">What date do you need to take the medication?</string>
+    <string name="frag_nd_date_shopping_subtitle">Enter the date of your shopping trip:</string>
+    <string name="frag_nd_date_daily_subtitle">Enter the date of your task:</string>
+    <string name="frag_nd_date_social_subtitle">Enter the date of your social event:</string>
+
+    <!-- TIME -->
+    <string name="frag_nd_time_gen">TIME</string>
+    <string name="frag_nd_time_gen_subtitle">Enter the time of the event:</string>
+    <string name="frag_nd_time_appt_subtitle">Enter the time of your appointment:</string>
+    <string name="frag_nd_time_birth_subtitle">Enter the time of the birthday event:</string>
+    <string name="frag_nd_time_medic_subtitle">What time do you need to take the medication?</string>
+    <string name="frag_nd_time_shopping_subtitle">Enter the time of your shopping trip:</string>
+    <string name="frag_nd_time_daily_subtitle">Enter the time of your task:</string>
+    <string name="frag_nd_time_social_subtitle">Enter the time of your social event:</string>
+
+    <!-- DURATION -->
+    <string name="frag_nd_duration_gen">DURATION</string>
+    <string name="frag_nd_duration_gen_subtitle">Set the duration of the event?</string>
+    <string name="frag_nd_duration_appt_subtitle">Set appointment duration?</string>
+
+    <!-- NOTIFICATION -->
+    <string name="frag_nd_notification_gen">NOTIFICATION</string>
+    <string name="frag_nd_notification_gen_subtitle">When would you like to be reminded?</string>
+
+    <!-- NOTES -->
+    <string name="frag_nd_notes_gen">NOTES</string>
+    <string name="frag_nd_notes_shopping">SHOPPING LIST</string>
+    <string name="frag_nd_notes_birthday">PRESENTS</string>
+    <string name="frag_nd_notes_gen_subtitle">Enter any notes about the event:</string>
+    <string name="frag_nd_notes_gen_hint">Event notes...</string>
+    <string name="frag_nd_notes_appt_subtitle">Enter any notes about the appointment:</string>
+    <string name="frag_nd_notes_appt_hint">Appointment notes...</string>
+    <string name="frag_nd_notes_shopping_subtitle">Enter your shopping list:</string>
+    <string name="frag_nd_notes_shopping_hint">Shopping list items...</string>
+    <string name="frag_nd_notes_birthday_subtitle">Enter any birthday presents:</string>
+    <string name="frag_nd_notes_birthday_hint">Birthday present list...</string>
+    <string name="frag_nd_notes_daily_subtitle">Enter any notes about the task:</string>
+    <string name="frag_nd_notes_daily_hint">Task notes...</string>
+
+    <!-- REPEAT -->
+    <string name="frag_nd_repeat_gen">REPEAT</string>
+    <string name="frag_nd_repeat_gen_subtitle">Set as repeated event?</string>
+    <string name="frag_nd_repeat_appt_subtitle">Set repeated appointment?</string>
+    <string name="frag_nd_repeat_shopping_subtitle">Set shopping days to repeat</string>
+    <string name="frag_nd_repeat_medic_subtitle">Repeat medication reminders?</string>
+    <string name="frag_nd_repeat_daily_subtitle">Set as repeated task?</string>
+
+    <!-- PROMPT -->
+    <string name="frag_nd_prompt_gen">SUBTLETY</string>
+    <string name="frag_nd_prompt_gen_subtitle">Set the subtlety of the reminder</string>
+    <string name="frag_nd_prompt_appt_subtitle">Set the subtlety of the appointment reminder</string>
+    <string name="frag_nd_prompt_shopping_subtitle">Set the subtlety of the shopping reminder</string>
+    <string name="frag_nd_prompt_birthday_subtitle">Set the subtlety of the birthday reminder</string>
+    <string name="frag_nd_prompt_medic_subtitle">Set the subtlety of the medication reminder</string>
+    <string name="frag_nd_prompt_daily_subtitle">Set the subtlety of the daily task reminder</string>
+    <string name="frag_nd_prompt_social_subtitle">Set the subtlety of the social event reminder</string>
+
+    <!-- WHERE -->
+    <string name="frag_nd_where_social">LOCATION</string>
+    <string name="frag_nd_where_social_subtitle">Enter the location of the event:</string>
+    <string name="frag_nd_where_social_hint">Event location...</string>
+
+    <!-- EVENT AFTER -->
+    <string name="frag_nd_event_after_medic">TAKE AFTER</string>
+    <string name="frag_nd_event_after_medic_subtitle">Enter the event to take the medication after:</string>
+    <string name="frag_nd_event_after_medic_hint">E.g. a meal</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- ///////////////////////// NDDT FRAGMENT UIs ////////////////////////////////////////////-->
+    <!-- Event Title -->
+    <string name="frag_bsdt_event_title_appt_hint">Enter appointment name...</string>
+    <string name="frag_bsdt_event_title_shopping_hint">Enter shopping location...</string>
+    <string name="frag_bsdt_event_title_birth_hint">Enter whose birthday it is...</string>
+    <string name="frag_bsdt_event_title_medic_hint">Enter type of medication...</string>
+    <string name="frag_bsdt_event_title_daily_hint">Enter name of daily task...</string>
+    <string name="frag_bsdt_event_title_social_hint">Enter name of social event...</string>
+
+    <!-- Notes -->
+    <string name="frag_bsdt_notes_appt_hint">Enter notes about the appointment...</string>
+    <string name="frag_bsdt_notes_shopping_hint">Enter any shopping list items...</string>
+    <string name="frag_bsdt_notes_birth_hint">Enter any birthday presents...</string>
+    <string name="frag_bsdt_notes_daily_hint">Enter any notes about the task...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!-- Schedule Strings -->
+    <string name="schedule_row_empty_title"> &lt; Not Set &gt; </string>
+    <string name="schedule_row_empty_notes"> &lt; None &gt; </string>
+    <string name="schedule_row_empty_location"> &lt; Not Set &gt; </string>
+    <string name="schedule_row_event_after"> &lt; Not Set &gt; </string>
+    <string name="schedule_edit_dialog_title">Edit the Reminder?</string>
+
+
+</resources>

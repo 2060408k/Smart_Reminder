@@ -1,0 +1,13 @@
+<android.support.wearable.view.WatchViewStub
+    android:id="@+id/wearViewRemindersContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:rectLayout="@layout/activity_view_reminders_square"
+    app:roundLayout="@layout/activity_view_reminders_round"
+    tools:context=".ViewRemindersActivity"
+    tools:deviceIds="wear">
+
+</android.support.wearable.view.WatchViewStub>

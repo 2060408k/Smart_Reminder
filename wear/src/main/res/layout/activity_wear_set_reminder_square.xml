@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/setReminderActivityContainer"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/cs3GreenDark2">
+
+    <!-- Activity Mode Text -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".25">
+
+        <TextView
+            android:id="@+id/setReminderActivityModetitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Quick Reminder"/>
+
+    </RelativeLayout>
+
+    <!-- Record Button -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".50">
+
+        <TextView
+            android:id="@+id/setReminderActivityRecordBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_circle_red"
+            android:text="START"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+    <!-- Gesture Image -->
+    <RelativeLayout
+        android:id="@+id/setReminderActivityCancelView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".25">
+
+        <TextView
+            android:id="@+id/setReminderActivityCancelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Exit"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

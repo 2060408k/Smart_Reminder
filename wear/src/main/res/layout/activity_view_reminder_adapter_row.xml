@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/cs3GreenDark3"
+              android:orientation="horizontal"
+              android:paddingBottom="8dp"
+              android:paddingLeft="8dp"
+              android:paddingRight="8dp"
+              android:paddingTop="8dp">
+
+    <!-- Delete -->
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".20">
+
+        <ImageView
+            android:id="@+id/viewReminderDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_view_reminder_delete"/>
+
+    </RelativeLayout>
+
+    <!-- Reminder Icon -->
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".60">
+
+        <TextView
+            android:id="@+id/viewReminderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableTop="@mipmap/ic_reminder_wear_large"
+            android:text="23/12/16 17:23"
+            android:textColor="@color/White"
+            android:textSize="16dp"/>
+
+    </RelativeLayout>
+
+    <!-- Play/Stop -->
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".20">
+
+        <ImageView
+            android:id="@+id/viewReminderPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_view_remind_play"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

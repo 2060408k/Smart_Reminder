@@ -1,0 +1,163 @@
+<resources>
+
+    <!-- BASE THEME /////////////////////////////////////////////////////////////////////////////-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/appGreenMain</item>
+        <item name="colorPrimaryDark">@color/appGreenDark2</item>
+        <item name="colorAccent">@color/appBlueLight1</item>
+
+        <!-- Set Action Bar Style to Custom Style -->
+        <item name="android:actionBarStyle">@style/customActionBarTheme</item>
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/customActionBarTheme</item>
+        <!-- Remove Shadow From Actionbar -->
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Custom Action Bar Theme -->
+    <style name="customActionBarTheme" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:titleTextStyle">@style/customTitleTheme</item>
+        <item name="titleTextStyle">@style/customTitleTheme</item>
+        <item name="android:background">@color/cs3GreenDark3</item>
+        <item name="background">@color/cs3GreenDark3</item> <!-- Support Bar-->
+    </style>
+
+    <!-- Custom Action Bar Text Style -->
+    <style name="customTitleTheme" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- SETTINGS THEME /////////////////////////////////////////////////////////////////////////-->
+    <style name="SettingsActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/appGreenMain</item>
+        <item name="colorPrimaryDark">@color/appGreenDark2</item>
+        <item name="colorAccent">@color/appBlueLight1</item>
+        <!-- Remove Shadow From Actionbar -->
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- Set Action Bar Style to Custom Style -->
+        <item name="android:actionBarStyle">@style/customSettingsActionBarTheme</item>
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/customSettingsActionBarTheme</item>
+
+    </style>
+
+    <!-- Settings custom action bar -->
+    <style name="customSettingsActionBarTheme" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:background">@color/cs3GreenDark3</item>
+        <item name="background">@color/cs3GreenDark3</item> <!-- Support Bar -->
+    </style>
+
+    <!-- Styles For  Backgrounds of the ActionBar and Tabs -->
+    <style name="appActionTabsBg">
+        <item name="android:background">@color/cs3GreenDark3</item>
+    </style>
+
+    <!-- Style For Background of the Tab Fragment Container (main UI bg) -->
+    <style name="appMainUIBg">
+        <item name="android:background">@color/cs3GreenDark3</item>
+    </style>
+
+    <!-- FRAGMENT SPACING ///////////////////////////////////////////////////////////////////////-->
+    <style name="fragBackground">
+        <item name="android:background">@color/gs1</item>
+    </style>
+
+    <style name="cardHolder">
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <!-- Space at Top of each card -->
+    <style name="cardMargins">
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="innerCardPadding">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+    </style>
+
+    <style name="innerCardTitle">
+        <item name="android:paddingLeft">7dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <style name="seperator">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/gs3</item>
+    </style>
+
+    <style name="scheduleSeperator">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/gs1</item>
+    </style>
+
+    <style name="cardMainWidgetPadding">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="aboveContentTextMargins">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="repeatDayGridCheckSpacing">
+        <item name="android:layout_marginLeft">4dp</item>
+    </style>
+
+    <style name="repeatDayGridDayPadding">
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingRight">24dp</item>
+    </style>
+
+    <style name="fragBgND">
+        <item name="android:background">@color/gs1</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingTop">8dp</item> <!-- + 8dp from cardMargins -->
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+
+    <style name="fragNdNavBarTitleIconMargin">
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+
+    <style name="fragNdNavBarTitleMarginBottom">
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <!-- Frag ND Subtitle -->
+    <style name="fragNdAboveContentTextMargin">
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <!-- Schedule Frag -->
+    <style name="scheduleFragStyle">
+        <item name="android:background">@color/gs1</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <style name="scheduleRowSpacing">
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <!-- Reminder Dialog -->
+    <style name="full_screen_reminder_dialog"  parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+</resources>

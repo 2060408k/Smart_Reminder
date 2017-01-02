@@ -1,0 +1,171 @@
+<RelativeLayout style="@style/fragBgND"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="highway62.reminderapp.fragments.NDEventTitleFragment">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            style="@style/innerCardPadding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Event Title and Navigation -->
+            <LinearLayout
+                style="@style/fragNdNavBarTitleMarginBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Back Navigation -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15">
+
+                    <TextView
+                        android:id="@+id/frag_nd_backBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableTop="@drawable/ic_nav_back"
+                        android:text="Back"/>
+
+                </RelativeLayout>
+
+                <!-- Title -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".70"
+                    android:orientation="horizontal">
+
+                    <!-- Title text -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/frag_nd_title_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/frag_nd_event_title_gen"
+                            android:textColor="@color/gs5"
+                            android:textSize="24sp"/>
+
+                        <ImageView
+                            style="@style/fragNdNavBarTitleIconMargin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@id/frag_nd_title_text"
+                            android:src="@drawable/ic_frag_event_before"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- Forward Navigation -->
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15">
+
+                    <TextView
+                        android:id="@+id/frag_nd_nextBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:drawableTop="@drawable/ic_nav_next"
+                        android:text="Next"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <!-- Seperator -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    style="@style/seperator"
+                    android:layout_width="match_parent"/>
+
+            </RelativeLayout>
+
+            <!-- Subtitle -->
+            <RelativeLayout
+                style="@style/fragNdAboveContentTextMargin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/frag_nd_subtitle_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/frag_nd_date_gen_subtitle"/>
+
+            </RelativeLayout>
+
+            <!-- Time Spinner -->
+            <RelativeLayout
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/frag_bs_event_notification_spinner"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+
+            <!-- Custom Text -->
+            <RelativeLayout
+                android:id="@+id/frag_bs_notification_custom_txt_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/frag_bs_notification_custom_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="18dp"/>
+
+            </RelativeLayout>
+
+            <!-- Warning -->
+            <RelativeLayout
+                android:id="@+id/notification_warning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/Red"
+                    android:layout_centerInParent="true"
+                    android:text="@string/frag_notification_warning"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

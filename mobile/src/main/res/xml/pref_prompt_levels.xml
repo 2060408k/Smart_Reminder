@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_prompt_general_category_title">
+
+        <!-- Checkbox to Enable/Diable User Manually Setting Reminder Subtlety -->
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:disableDependentsState="true"
+            android:key="@string/Pref_Prompt_User_Subtlety_Checkbox"
+            android:summary="@string/pref_prompt_user_subtlety_checkbox_summary"
+            android:title="@string/pref_prompt_user_subtlety_checkbox_title"/>
+
+        <!-- Defualt User Subtlety Level -->
+        <ListPreference
+            android:defaultValue="0"
+            android:dependency="@string/Pref_Prompt_User_Subtlety_Checkbox"
+            android:entries="@array/pref_prompt_default_prompt_level_entries_values"
+            android:entryValues="@array/pref_prompt_default_prompt_level_entries_values"
+            android:key="@string/Pref_Prompt_Default_User_Subtlety_Level"
+            android:title="@string/pref_prompt_default_prompt_level_title"/>
+
+        <!-- List to Choose Between which Devices Receive Reminders -->
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/pref_prompt_device_entries"
+            android:entryValues="@array/pref_prompt_device_values"
+            android:key="@string/Pref_Prompt_Device_List"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_prompt_device_list_title"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_prompt_level_category_title">
+
+        <!-- Checkbox to Enable/Disable Setting the Default Levels for UPs and Reminders -->
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/Pref_Prompt_Default_Levels_Checkbox"
+            android:title="@string/pref_prompt_default_levels_checkbox_title"/>
+
+        <!-- Set the Default Modality Levels For UPs and Reminders -->
+        <Preference
+            android:key="@string/Pref_Prompt_Default_Levels"
+            android:title="@string/pref_prompt_default_levels_header">
+            <intent android:action="highway62.reminderapp.SettingsPromptLevelActivity">
+                <extra
+                    android:name="@string/pref_prompt_modality_level_intent_key"
+                    android:value="@string/pref_prompt_modality_level_intent_value_default"/>
+            </intent>
+        </Preference>
+
+        <!-- Set the Modality Levels for UPs -->
+        <Preference
+            android:key="@string/Pref_Prompt_UP_Levels"
+            android:title="@string/pref_prompt_UP_levels_header">
+            <intent android:action="highway62.reminderapp.SettingsPromptLevelActivity">
+                <extra
+                    android:name="@string/pref_prompt_modality_level_intent_key"
+                    android:value="@string/pref_prompt_modality_level_intent_value_UP"/>
+            </intent>
+        </Preference>
+
+        <!-- Set the Modailty Levels for Reminders -->
+        <Preference
+            android:key="@string/Pref_Prompt_Reminder_Levels"
+            android:title="@string/pref_prompt_reminder_levels_header">
+            <intent android:action="highway62.reminderapp.SettingsPromptLevelActivity">
+                <extra
+                    android:name="@string/pref_prompt_modality_level_intent_key"
+                    android:value="@string/pref_prompt_modality_level_intent_value_reminder"/>
+            </intent>
+        </Preference>
+
+
+    </PreferenceCategory>
+
+
+    <!-- Allows the user to choose a ringtone in the 'notification' category. -->
+    <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
+    <!-- NOTE: RingtonePreference's summary should be set to its value by the activity code. -->
+    <!--
+    <RingtonePreference
+        android:defaultValue="content://settings/system/notification_sound"
+        android:dependency="notifications_new_message"
+        android:key="notifications_new_message_ringtone"
+        android:ringtoneType="notification"
+        android:title="@string/pref_title_ringtone"/>
+        -->
+
+    <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
+    <!--
+    <SwitchPreference
+        android:defaultValue="true"
+        android:dependency="notifications_new_message"
+        android:key="notifications_new_message_vibrate"
+        android:title="@string/pref_title_vibrate"/>
+        -->
+
+</PreferenceScreen>

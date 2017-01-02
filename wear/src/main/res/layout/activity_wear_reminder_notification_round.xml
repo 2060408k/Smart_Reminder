@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/White">
+
+    <RelativeLayout
+        android:id="@+id/reminderNotificationTitleCont"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".30"
+        android:background="@color/cs3Orange">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REMINDER"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15">
+
+        <TextView
+            android:id="@+id/notificationTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have an Event"
+            android:layout_centerInParent="true"
+            android:textColor="@color/cs3GreenDark2"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15">
+
+        <TextView
+            android:id="@+id/notificationDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On 17/12/2017"
+            android:layout_centerInParent="true"
+            android:textColor="@color/Black"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".10">
+
+        <TextView
+            android:id="@+id/notificationTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="At 17:55"
+            android:layout_centerInParent="true"
+            android:textColor="@color/Black"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".30">
+
+        <Button
+            android:id="@+id/notificationDismissBtn"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:text="Dismiss"
+            android:layout_centerInParent="true"
+            android:background="@color/cs3GreenDark2"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

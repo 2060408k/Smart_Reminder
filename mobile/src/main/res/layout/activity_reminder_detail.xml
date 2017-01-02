@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cs3Blue"
+    android:orientation="vertical"
+    tools:context="highway62.reminderapp.ReminderDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".25"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_reminder_head"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="REMINDER"
+                android:textColor="@color/White"
+                android:textSize="28sp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".60"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="@color/White">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:paddingTop="16dp">
+
+            <!-- Event Type -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/reminderTypeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="false"
+                    android:layout_centerHorizontal="true"
+                    android:text="EVENT"
+                    android:textColor="@color/cs1Green"
+                    android:textSize="24sp"/>
+
+            </RelativeLayout>
+
+            <!-- Name/Title -->
+            <RelativeLayout
+                style="@style/scheduleRowSpacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reminderNameTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name:"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+            <!-- Location -->
+            <RelativeLayout
+                android:id="@+id/reminderLocationTxtCont"
+                style="@style/scheduleRowSpacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reminderLocationTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location:"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+            <!-- Event After -->
+            <RelativeLayout
+                android:id="@+id/reminderEventAfterCont"
+                style="@style/scheduleRowSpacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reminderEventAfter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Event After:"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+            <!-- Date -->
+            <RelativeLayout
+                style="@style/scheduleRowSpacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reminderDateTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date:"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+            <!-- Time -->
+            <RelativeLayout
+                style="@style/scheduleRowSpacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reminderTimeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time:"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+            <!-- Duration -->
+            <RelativeLayout
+                android:id="@+id/reminderDurationCont"
+                style="@style/scheduleRowSpacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reminderDurationTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duration:"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+            <!-- Notes -->
+            <RelativeLayout
+                android:id="@+id/reminderNotesCont"
+                style="@style/scheduleRowSpacing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reminderNotesTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notes:"
+                    android:textSize="18sp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15"
+        android:background="@color/White"
+        android:paddingBottom="8dp">
+
+        <Button
+            android:id="@+id/reminderOKBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/cs3GreenDark2"
+            android:text="OK"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

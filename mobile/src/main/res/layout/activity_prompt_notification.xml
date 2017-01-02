@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="highway62.reminderapp.PromptNotificationActivity"
+    android:paddingTop="16dp"
+    android:background="@color/cs3Blue">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".35"
+        android:background="@color/cs3Blue"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/promptNotificationQuestionImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_prompt_question"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".40"
+        android:background="@color/White"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:id="@+id/promptNotificationMainTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do you need to set any reminders?"
+            android:textSize="32sp"
+            android:textAlignment="center"
+            android:textColor="@color/cs1Green"
+            android:layout_centerInParent="true"/>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight=".25"
+        android:background="@color/White"
+        android:paddingTop="16dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50">
+
+            <Button
+                android:id="@+id/promptNotificationDismissBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dismiss"
+                android:layout_centerInParent="true"
+                android:background="#f44336"
+                android:textColor="@color/White"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50">
+
+            <Button
+                android:id="@+id/promptNotificationOKBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Reminder"
+                android:layout_centerInParent="true"
+                android:background="@color/cs3GreenDark2"
+                android:textColor="@color/White"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

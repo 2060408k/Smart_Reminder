@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ReminderApp</string>
+    <string name="hello_world">Hello World!</string>
+
+    <string name="quick_reminder_time">QUICK_REMINDER_TIME</string>
+    <string name="quick_reminder_scale">QUICK_REMINDER_SCALE</string>
+    <string name="quick_reminder_index">QUICK_REMINDER_INDEX</string>
+
+</resources>

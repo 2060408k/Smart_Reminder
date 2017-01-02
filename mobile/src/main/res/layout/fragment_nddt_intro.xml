@@ -1,0 +1,152 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                style="@style/fragBgND"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".fragments.BSDTIntroFragment">
+
+    <!-- Columns -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <!-- Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight=".33">
+
+            <!-- APPT -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".50">
+
+                <TextView
+                    android:id="@+id/intro_cat_appt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Appointment"
+                    android:drawableTop="@drawable/ic_cat_appt"
+                    android:gravity="center_horizontal"
+                    android:textSize="18dp"/>
+
+            </RelativeLayout>
+
+            <!-- SHOPPING -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".50">
+
+                <TextView
+                    android:id="@+id/intro_cat_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Shopping"
+                    android:drawableTop="@drawable/ic_cat_shop"
+                    android:gravity="center_horizontal"
+                    android:textSize="18dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!-- Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight=".33">
+
+            <!-- BIRTHDAY -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".50">
+
+                <TextView
+                    android:id="@+id/intro_cat_birth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Birthday"
+                    android:drawableTop="@drawable/ic_cat_birth"
+                    android:gravity="center_horizontal"
+                    android:textSize="18dp"/>
+
+            </RelativeLayout>
+
+            <!-- MEDIC -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".50">
+
+                <TextView
+                    android:id="@+id/intro_cat_medic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Medication"
+                    android:drawableTop="@drawable/ic_cat_medic"
+                    android:gravity="center_horizontal"
+                    android:textSize="18dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!-- Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight=".33">
+
+            <!-- DAILY -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".50">
+
+                <TextView
+                    android:id="@+id/intro_cat_daily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Daily Task"
+                    android:drawableTop="@drawable/ic_cat_daily"
+                    android:gravity="center_horizontal"
+                    android:textSize="18dp"/>
+
+            </RelativeLayout>
+
+            <!-- SOCIAL -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".50">
+
+                <TextView
+                    android:id="@+id/intro_cat_social"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Social Event"
+                    android:drawableTop="@drawable/ic_cat_social"
+                    android:gravity="center_horizontal"
+                    android:textSize="18dp"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

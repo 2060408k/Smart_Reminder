@@ -1,0 +1,45 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/timeSelectorFragRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/cs3Blue">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".60">
+
+        <TextView
+            android:id="@+id/timeSelectorTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="52sp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/cs3Orange"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".40">
+
+        <TextView
+            android:id="@+id/timeSelectorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hour"
+            android:textSize="22sp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/cs3Orange"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
