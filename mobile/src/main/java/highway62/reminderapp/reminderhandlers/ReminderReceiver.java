@@ -7,20 +7,33 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 import highway62.reminderapp.PromptNotificationActivity;
 import highway62.reminderapp.R;
 import highway62.reminderapp.ReminderActivity;
@@ -31,6 +44,7 @@ import highway62.reminderapp.adminSettings.SettingsInterface;
 import highway62.reminderapp.communication.CommunicationHandler;
 import highway62.reminderapp.constants.Consts;
 import highway62.reminderapp.constants.EventType;
+import highway62.reminderapp.constants.ReminderPattern;
 import highway62.reminderapp.constants.ReminderType;
 import highway62.reminderapp.reminders.BaseReminder;
 
@@ -56,12 +70,15 @@ public class ReminderReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         this.context = context;
-        if (intent.getParcelableExtra(Consts.REMINDER_SUGGEST)!=null){
-            new SmartReminding(this.context);
+        boolean suggest=intent.getBooleanExtra(Consts.REMINDER_SUGGEST,false);
+        if (suggest){
+
+            new SmartReminding(this.context).collect_and_set_reminder_suggestions();
             return;}
         this.settings = new SettingsInterface(context);
         this.reminder = intent.getParcelableExtra(Consts.REMINDER_INTENT);
         System.out.println("Fire "+this.reminder);
+        if (this.reminder==null) return;
         ringToneCancelled = false;
         displayReminder();
     }
@@ -80,7 +97,6 @@ public class ReminderReceiver extends BroadcastReceiver {
         if (level == -1) {
             level = settings.getDefaultUserSubtletyLevel();
         }
-        System.out.println(settings.visualEnabledIsSet(level, type)+" "+level+" "+type);
         // Reminder Visual -----------------------------------------------------------------------//
         if (settings.visualEnabledIsSet(level, type) || type==ReminderType.SMART) {
 
@@ -130,12 +146,83 @@ public class ReminderReceiver extends BroadcastReceiver {
                         .setVibrate(null)
                         .setSound(null);
 
+        if (reminder.getReminderType().equals(ReminderType.SMART)){
+            NotificationCompat.InboxStyle inboxStyle =
+                    new NotificationCompat.InboxStyle();
+
+            // Sets a title for the Inbox in expanded layout
+            inboxStyle.setBigContentTitle("Reminder Suggestion!");
+
+            // Set content
+            String[] items = reminder.getNotes().split(",");
+            List<String> itemList = new ArrayList<String>(Arrays.asList(items));
+
+            for (String text : itemList){
+                System.out.println(text);
+                inboxStyle.addLine(text);
+            }
+
+            mBuilder.setStyle(inboxStyle);
+        }
         Intent resultIntent;
         if (reminder.getReminderType().equals(ReminderType.REMINDER)) {
             resultIntent = new Intent(context, ReminderDetailActivity.class);
             resultIntent.putExtra(Consts.REMINDER_INTENT, reminder);
         } else {
             resultIntent = new Intent(context, ReminderActivity.class);
+            if (reminder.getReminderType().equals(ReminderType.SMART)){
+
+                resultIntent.putExtra("NotiClick",true);
+                resultIntent.putExtra("pattern",reminder.getPattern());
+
+                //get database reference
+                DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();
+                //get android device's unique id or name
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
+                Boolean smart_login = sharedPreferences.getBoolean("smart_login",false);
+                String smart_login_name = sharedPreferences.getString("smart_login_name",null);
+                final String  android_id;
+                if (smart_login){
+                    android_id=smart_login_name;
+                }else{
+                    android_id= Settings.Secure.getString(this.context.getContentResolver(), Settings.Secure.ANDROID_ID);
+
+                }
+                //add one time event listener to update data
+                mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Get the mapped database values
+                        HashMap map = (HashMap)dataSnapshot.getValue();
+
+                        //New value for prompts_accepted fields
+                        long value = (long)((HashMap)map.get(android_id)).get("total_prompts") + 1;
+                        long weekly_value = (long)((HashMap)map.get(android_id)).get("weekly_prompts") + 1;
+                        long two_week_value = (long)((HashMap)map.get(android_id)).get("two_week_prompts") + 1;
+                        long monthly_value = (long)((HashMap)map.get(android_id)).get("monthly_prompts") + 1;
+
+                        //Check if smart reminding is enabled
+                        boolean check= (boolean)((HashMap)map.get(android_id)).get("smart_reminding");
+                        if (check)
+                            dataSnapshot.getRef().child(android_id).child("total_prompts").setValue(value);
+                            ReminderPattern pattern=reminder.getPattern();
+                            System.out.println("Recevied " + pattern);
+                            if (pattern!=null){
+                                if (pattern.equals(ReminderPattern.WEEKLY))
+                                    dataSnapshot.getRef().child(android_id).child("weekly_prompts").setValue(weekly_value);
+                                if (pattern.equals(ReminderPattern.TWO_WEEKS))
+                                    dataSnapshot.getRef().child(android_id).child("two_week_prompts").setValue(two_week_value);
+                                if (pattern.equals(ReminderPattern.MONTHLY))
+                                    dataSnapshot.getRef().child(android_id).child("monthly_prompts").setValue(monthly_value);
+                            }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError firebaseError) {
+                    }
+                });
+            }
+
         }
 
         PendingIntent resultPendingIntent =
@@ -363,6 +450,11 @@ public class ReminderReceiver extends BroadcastReceiver {
             }
         } else {
             String notes = reminder.getNotes();
+
+            if (reminder.getReminderType().equals(ReminderType.SMART)){
+
+                notes ="Reminder Suggestion !";
+            }
             sb.append(notes);
         }
 
@@ -376,8 +468,18 @@ public class ReminderReceiver extends BroadcastReceiver {
             DateTimeFormatter dtfDate = DateTimeFormat.forPattern("dd/MM/yyyy");
             DateTimeFormatter dtfTime = DateTimeFormat.forPattern("HH:mm");
             content = "Set for: " + dtfDate.print(dateTime) + " at " + dtfTime.print(dateTime);
+
         } else {
             content = "Click here to Set a Reminder";
+        }
+        if (reminder.getReminderType().equals(ReminderType.SMART)) {
+            DateTime dateTime = new DateTime(reminder.getDateTime());
+            DateTimeFormatter dtfDate = DateTimeFormat.forPattern("dd/MM/yyyy");
+            DateTimeFormatter dtfTime = DateTimeFormat.forPattern("HH:mm");
+            StringBuilder sb2 = new StringBuilder();
+            if(reminder.getTitle()!=null) sb2.append(reminder.getTitle()+": ");
+            sb2.append(dtfTime.print(dateTime));
+            content= sb2.toString();
         }
 
         return content;

@@ -7,7 +7,7 @@ import android.provider.BaseColumns;
  */
 public class DBContract {
 
-    public static final int DB_VERSION = 5;
+    public static final int DB_VERSION = 8;
     public static final String DB_NAME = "ApplTreeDB.db";
 
     public static abstract class ReminderTable implements BaseColumns{
@@ -27,7 +27,10 @@ public class DBContract {
         public static final String COLUMN_PROMPT_LEVEL = "prompt_level";
         public static final String COLUMN_EVENT_TYPE = "event_type";
         public static final String COLUMN_REMINDER_TYPE = "reminder_type";
+        public static final String COLUMN_PATTERN_TYPE = "reminder_pattern";
+        public static final String COLUMN_SMART_REMINDED = "smart_reminded";
         public static final String COLUMN_LOG_ID = "log_id";
+
     }
 
     public static abstract class ReminderDayTable{
@@ -47,6 +50,7 @@ public class DBContract {
         public static final String COLUMN_PROMPT_LEVEL= "prompt_level";
         public static final String COLUMN_EVENT_TYPE= "event_type";
         public static final String COLUMN_REMINDER_TYPE= "reminder_type";
+        public static final String COLUMN_PATTERN_TYPE = "reminder_pattern";
         public static final String COLUMN_PROMPT_RESPONDED = "prompt_responded";
         public static final String COLUMN_DATETIME_SET = "datetime_set";
     }

@@ -59,7 +59,6 @@ public class ReminderHandler {
     }
 
     public static void setReminder(Context context, BaseReminder reminder) {
-        System.out.println("Adding reminder "+reminder.getDateTime()+ " " + reminder.getReminderType());
         // Check if DB exists, if not call createDB()
         ReminderDAO reminderDAO = createDatabase(context);
 
@@ -182,8 +181,6 @@ public class ReminderHandler {
         // Check notification time
         int notTime = reminder.getNotificationTime();
         if (reminder.getNotificationScale() != null) {
-            System.out.println("First");
-            System.out.println(reminder.getNotificationScale());
             switch (reminder.getNotificationScale()) {
                 case SAMETIME:
                     dt = new DateTime(reminder.getDateTime())
@@ -227,7 +224,6 @@ public class ReminderHandler {
             }
 
         } else if (reminder.getType().equals(EventType.BIRTH)) {
-            System.out.println("Second");
             // Set notification for the day before
             dt = new DateTime(reminder.getDateTime())
                     .withSecondOfMinute(0)
@@ -283,7 +279,6 @@ public class ReminderHandler {
             }
 
         } else {
-            System.out.println("Third");
             // Reminder is social event or daily task, set notification for 1 hour before
             dt = new DateTime(reminder.getDateTime())
                     .withSecondOfMinute(0)
@@ -296,8 +291,6 @@ public class ReminderHandler {
                         .minusHours(1);
             }
         }
-        System.out.println("MEOW");
-        System.out.println(reminder.getType()+ " " + dt.getMillis() + " ");
         // Set the alarm
         alarmManager.setExact(AlarmManager.RTC_WAKEUP
                 , dt.getMillis()

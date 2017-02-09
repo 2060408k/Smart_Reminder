@@ -26,4 +26,9 @@
         android:icon="@drawable/ic_tab_reminder"
         android:title="@string/smart_reminder"/>
 
+    <header
+        android:fragment="highway62.reminderapp.adminSettings.SettingsActivity$SmartLoginFragment"
+        android:icon="@drawable/quantum_ic_bigtop_updates_white_24"
+        android:title="@string/smart_login"/>
+
 </preference-headers>

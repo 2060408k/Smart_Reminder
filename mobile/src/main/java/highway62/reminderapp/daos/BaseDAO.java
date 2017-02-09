@@ -35,7 +35,9 @@ public class BaseDAO extends SQLiteOpenHelper {
                         + DBContract.ReminderTable.COLUMN_PROMPT_LEVEL + " INTEGER DEFAULT 0,"
                         + DBContract.ReminderTable.COLUMN_EVENT_TYPE + " TEXT,"
                         + DBContract.ReminderTable.COLUMN_LOG_ID + " INTEGER DEFAULT 0,"
-                        + DBContract.ReminderTable.COLUMN_REMINDER_TYPE + " TEXT"
+                        + DBContract.ReminderTable.COLUMN_REMINDER_TYPE + " TEXT,"
+                        + DBContract.ReminderTable.COLUMN_PATTERN_TYPE + " TEXT,"
+                        + DBContract.ReminderTable.COLUMN_SMART_REMINDED + " INTEGER DEFAULT 0"
                         + ")";
 
         String CREATE_REMINDER_DAYS_TABLE =
@@ -58,8 +60,10 @@ public class BaseDAO extends SQLiteOpenHelper {
                         + DBContract.ReminderLogTable.COLUMN_PROMPT_LEVEL + " INTEGER DEFAULT 0,"
                         + DBContract.ReminderLogTable.COLUMN_EVENT_TYPE + " TEXT,"
                         + DBContract.ReminderLogTable.COLUMN_REMINDER_TYPE + " TEXT,"
+                        + DBContract.ReminderLogTable.COLUMN_PATTERN_TYPE + " TEXT,"
                         + DBContract.ReminderLogTable.COLUMN_PROMPT_RESPONDED + " INTEGER DEFAULT 0,"
-                        + DBContract.ReminderLogTable.COLUMN_DATETIME_SET + " INTEGER DEFAULT -1"
+                        + DBContract.ReminderLogTable.COLUMN_DATETIME_SET + " INTEGER DEFAULT -1,"
+                        + DBContract.ReminderTable.COLUMN_SMART_REMINDED + " INTEGER DEFAULT 0"
                         + ")";
 
         String CREATE_REMINDER_DAYS_LOG_TABLE =

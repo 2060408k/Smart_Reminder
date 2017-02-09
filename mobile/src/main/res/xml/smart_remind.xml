@@ -4,16 +4,25 @@
     <CheckBoxPreference
         android:defaultValue="false"
         android:title="Smart Reminder Suggestion"
-        android:key="smart_suggestion_preference" />
+        android:key="smart_suggestion_preference"
+        android:summary="Enable the reminder to suggest reminders"/>
     <ListPreference
         android:defaultValue="1"
         android:title="Reminding Time Periods"
         android:entries="@array/pref_prompt_remind_time_entries"
         android:entryValues="@array/pref_prompt_remind_time_entries"
-        android:key="smart_remind_time_periods" />
+        android:key="smart_remind_time_periods"
+        android:summary="Choose between the time periods for the reminders to take place"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:title="Add test reminders"
-        android:key="test_reminders_preference" />
+        android:key="test_reminders_preference"
+        android:summary="Adds a reminder for each category(Weekly,two weeks and monthly)"/>
+    <Preference android:title="Add weekly test reminder"
+        android:key="testReminderButton"
+        android:summary="Add reminder with pattern weekly"/>
+    <Preference android:title="Reset database data"
+        android:key="resetDatabaseButton"
+        android:summary="Zero the database values"/>
 
 </PreferenceScreen>

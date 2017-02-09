@@ -123,7 +123,6 @@ public class BSFragment extends Fragment {
         //
         settings = context.getSettingsSingleton();
         actionBar = context.getSupportActionBar();
-        System.out.println("meowleleis");
         if (getArguments() != null) {
             this.reminders = getArguments().getParcelableArrayList(ARG_REMINDERS);
             BaseReminder it=null;
@@ -134,7 +133,6 @@ public class BSFragment extends Fragment {
                 DateTime dt = new DateTime(rem.getDateTime())
                         .withSecondOfMinute(0)
                         .withMillisOfSecond(0);
-                System.out.println(dt);
                 i++;
             }
         }

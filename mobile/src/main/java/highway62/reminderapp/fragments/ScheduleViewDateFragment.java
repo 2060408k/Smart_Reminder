@@ -51,7 +51,6 @@ public class ScheduleViewDateFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println(getArguments()+" neiw");
         if (getArguments() != null) {
             this.reminders = getArguments().getParcelableArrayList(ARG_REMINDERS);
         }

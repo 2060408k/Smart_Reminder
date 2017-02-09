@@ -31,6 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
+
                 <FrameLayout
                     android:id="@+id/tabReminderContainer"
                     android:layout_width="match_parent"
@@ -43,6 +45,7 @@
                     android:layout_height="match_parent">
 
                     <!-- Schedule Key -->
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -137,6 +140,36 @@
                     </RelativeLayout>
 
                 </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/tabSuggestionContainer"
+                    style="@style/fragBgND"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- Schedule Key -->
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:orientation="vertical"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp">
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+
 
             </FrameLayout>
 

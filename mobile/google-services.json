@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "871688599148",
+    "firebase_url": "https://smart-reminder-4f561.firebaseio.com",
+    "project_id": "smart-reminder-4f561",
+    "storage_bucket": "smart-reminder-4f561.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871688599148:android:0c68d500172c252a",
+        "android_client_info": {
+          "package_name": "highway62.reminderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871688599148-0tomoe4nb3sru7gni6nl1g96atsutftq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIeP38DnRYP3ehnQGz3PnYLef5URQpaB4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

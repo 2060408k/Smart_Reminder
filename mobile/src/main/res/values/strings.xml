@@ -16,6 +16,21 @@
     <string name="Pref_Prompt_Reminder_Levels">PREF_PROMPT_OPEN_REMINDER_LEVELS</string>
     <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
 
+    <!-- //////////////////////////////OCR////////////////////////////////////////////-->
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
+    <string name="title_activity_main">Ocr Detector Sample</string>
+    <string name="ocr_header">Click &quot;Detect Text&quot; to detect text</string>
+    <string name="read_text">Detect Text</string>
+    <string name="auto_focus">Auto Focus</string>
+    <string name="use_flash">Use Flash</string>
+    <string name="ocr_success">Text read successfully</string>
+    <string name="ocr_failure">No text captured</string>
+    <string name="ocr_error">"Error reading text: %1$s"</string>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////-->
     <!-- //////////////////////////// FRAGMENT TAGS /////////////////////////////////////////////-->
     <!-- Broad Shallow Tags -->
     <string name="bsdt_intro_tag">BSDT_INTRO_TAG</string>
@@ -48,6 +63,7 @@
     <!--////////////////////////////// User Interface ///////////////////////////////////////////-->
     <!--Smart Reminder-->
     <string name="smart_reminder">Smart Reminder</string>
+    <string name="smart_login">Login</string>
     <!-- UI settings Header -->
     <string name="pref_header_UI">User Interface</string>
 
@@ -138,6 +154,13 @@
     <string-array name="pref_prompt_device_entries">
         <item>Phone</item>
         <item>Phone and Watch</item>
+    </string-array>
+
+
+    <!-- Device List Entries -->
+    <string-array name="smart_login_entries">
+        <item>Collect data</item>
+        <item>Do not collect data</item>
     </string-array>
 
     <!-- Device List Entries -->

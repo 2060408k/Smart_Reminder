@@ -5,9 +5,13 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
@@ -21,8 +25,17 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import net.danlew.android.joda.JodaTimeAndroid;
 
+import java.util.HashMap;
+
+import highway62.reminderapp.SmartReminding.SuggestionTab;
 import highway62.reminderapp.actionbarlisteners.OnHomeListener;
 import highway62.reminderapp.adminSettings.SettingsActivity;
 import highway62.reminderapp.adminSettings.SettingsInterface;
@@ -30,6 +43,8 @@ import highway62.reminderapp.adminSettings.SettingsPasswordDialog;
 import highway62.reminderapp.adminSettings.SettingsPasswordListener;
 import highway62.reminderapp.constants.EventType;
 import highway62.reminderapp.constants.HandlerType;
+import highway62.reminderapp.constants.ReminderPattern;
+import highway62.reminderapp.constants.ReminderType;
 import highway62.reminderapp.daos.ReminderDAO;
 import highway62.reminderapp.fontSpan.TypefaceSpan;
 import highway62.reminderapp.fragmentHandlers.BSFragmentHandler;
@@ -37,11 +52,13 @@ import highway62.reminderapp.fragmentHandlers.DecisionTreeListener;
 import highway62.reminderapp.fragmentHandlers.NDFragmentHandler;
 import highway62.reminderapp.fragments.BSDTIntroFragment;
 import highway62.reminderapp.fragments.NDDTIntroFragment;
+import highway62.reminderapp.fragments.SuggestionTabFragment;
 import highway62.reminderapp.reminderhandlers.ReminderHandler;
 import highway62.reminderapp.reminders.BaseReminder;
 import highway62.reminderapp.tablisteners.TabListener;
 
-public class ReminderActivity extends AppCompatActivity implements DecisionTreeListener {
+
+public class ReminderActivity extends AppCompatActivity implements DecisionTreeListener, SuggestionTabFragment.OnFragmentInteractionListener {
 
     SettingsInterface settingsSingleton;
     FragmentManager fm;
@@ -53,6 +70,19 @@ public class ReminderActivity extends AppCompatActivity implements DecisionTreeL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("ReminderActivity started");
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            Intent intent =getIntent();
+            if(extras == null)
+            {
+                System.out.println("//Cry about not being clicked on");
+            }
+            if (extras!=null && extras.getBoolean("NotiClick") && (ReminderPattern) intent.getSerializableExtra("pattern")!=null)
+            {
+                sendToServerNotificationFeedback((ReminderPattern) intent.getSerializableExtra("pattern"));
+            }
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
         fm = getFragmentManager();
@@ -97,6 +127,20 @@ public class ReminderActivity extends AppCompatActivity implements DecisionTreeL
         mTabHost.getTabWidget().setDividerDrawable(R.drawable.tab_divider); // Adds Divider
         addTab(getString(R.string.reminder_tab_text), R.drawable.ic_tab_reminder, R.id.tabReminderContainer);
         addTab(getString(R.string.schedule_tab_text), R.drawable.ic_tab_schedule, R.id.tabScheduleContainer);
+        addTab("Suggestions",R.drawable.quantum_ic_art_track_grey600_48,R.id.tabSuggestionContainer);
+//        TabHost.TabSpec spec; // Reusable TabSpec for each tab
+//        Intent intent; // Reusable Intent for each tab
+//        spec = mTabHost.newTabSpec("Suggestions"); // Create a new TabSpec using tab host
+//        spec.setIndicator("Suggestions"); // set the “HOME” as an indicator
+//        View tabview = createTabView(mTabHost.getContext(),"Suggestions",R.drawable.quantum_ic_art_track_grey600_48);
+//        spec.setIndicator(tabview);
+//        // Create an Intent to launch an Activity for the tab (to be reused)
+//        intent = new Intent(this, SuggestionTab.class);
+//        spec.setContent(intent);
+//        TabHost.TabSpec content = mTabHost.newTabSpec("Suggestions").setIndicator(tabview).setContent(intent);
+//        mTabHost.addTab(content);
+
+
         setupTabListener();
     }
 
@@ -267,6 +311,7 @@ public class ReminderActivity extends AppCompatActivity implements DecisionTreeL
         }
     }
 
+
     private void setupDTActionBar() {
         if (settingsSingleton.getUIDecisionTreeEnabled()) {
             // Hide App Name
@@ -317,4 +362,61 @@ public class ReminderActivity extends AppCompatActivity implements DecisionTreeL
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
     */
+
+    private void sendToServerNotificationFeedback(final ReminderPattern pattern){
+        //get database reference
+        DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();
+        //get android device's unique id or name
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        Boolean smart_login = sharedPreferences.getBoolean("smart_login",false);
+        String smart_login_name = sharedPreferences.getString("smart_login_name",null);
+        final String  android_id;
+        if (smart_login){
+            android_id=smart_login_name;
+        }else{
+            android_id= Settings.Secure.getString(getBaseContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+
+        }
+        //add one time event listener to update data
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //Get the mapped database values
+                HashMap map = (HashMap) dataSnapshot.getValue();
+                boolean check = (boolean) ((HashMap) map.get(android_id)).get("smart_reminding");
+
+                if (check){
+                    long value = 0;
+                    long accepted_prompts_value = (long) ((HashMap) map.get(android_id)).get("prompts_accepted") + 1;
+
+                    //increase total accepted prompts
+                    dataSnapshot.getRef().child(android_id).child("prompts_accepted").setValue(accepted_prompts_value);
+
+                    //Find the pattern and increase it
+                    if (pattern != null) {
+                        if (pattern.equals(ReminderPattern.WEEKLY)) {
+                            value = (long) ((HashMap) map.get(android_id)).get("weekly_prompts_accepted") + 1;
+                            dataSnapshot.getRef().child(android_id).child("weekly_prompts_accepted").setValue(value);
+                        }
+                        if (pattern.equals(ReminderPattern.TWO_WEEKS)) {
+                            value = (long) ((HashMap) map.get(android_id)).get("two_week_prompts_accepted") + 1;
+                            dataSnapshot.getRef().child(android_id).child("two_week_prompts_accepted").setValue(value);
+                        }
+                        if (pattern.equals(ReminderPattern.MONTHLY)) {
+                            value = (long) ((HashMap) map.get(android_id)).get("monthly_prompts_accepted") + 1;
+                            dataSnapshot.getRef().child(android_id).child("monthly_prompts_accepted").setValue(value);
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+            }
+        });
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }

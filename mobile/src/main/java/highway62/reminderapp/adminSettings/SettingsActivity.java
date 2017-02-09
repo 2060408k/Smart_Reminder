@@ -15,6 +15,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -22,16 +23,34 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Toast;
+import android.provider.Settings.Secure;
+
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Wearable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import highway62.reminderapp.R;
 import highway62.reminderapp.SmartReminding.SmartReminding;
 import highway62.reminderapp.communication.CommunicationHandler;
 import highway62.reminderapp.constants.EventType;
+import highway62.reminderapp.constants.NotificationScale;
+import highway62.reminderapp.constants.ReminderPattern;
 import highway62.reminderapp.constants.ReminderType;
 import highway62.reminderapp.reminderhandlers.ReminderHandler;
 import highway62.reminderapp.reminders.BaseReminder;
@@ -144,7 +163,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 || PromptLevelPreferenceFragment.class.getName().equals(fragmentName)
                 || UPPreferenceFragment.class.getName().equals(fragmentName)
                 || LoggingOptionsFragment.class.getName().equals(fragmentName)
-                || SmartRemindingFragment.class.getName().equals(fragmentName);
+                || SmartRemindingFragment.class.getName().equals(fragmentName)
+                || SmartLoginFragment.class.getName().equals(fragmentName);
     }
 
     /////////////////////////////////// PREFERENCE FRAGMENTS ///////////////////////////////////////
@@ -477,8 +497,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         Preference checkBox;
         Preference timeList;
         Preference testRemindCheckbox;
-        Context context;
+        Preference testReminderButton;
+        Preference resetDatabaseButton;
         Integer time;
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -490,11 +512,54 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     @Override
                     public boolean onPreferenceChange(Preference preference, Object newValue) {
                         if (newValue.toString().equals("true")) {
-                            if (time!=null)
-                                new SmartReminding(preference.getContext(),time).collect_and_set_reminder_suggestions();
-                            else
+                            //Start the smart reminding
+                            if (time!=null) {
+                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
+                                SharedPreferences.Editor editor = prefs.edit();
+                                editor.putBoolean("smart_reminding", true);
+                                editor.commit();
+                                new SmartReminding(preference.getContext(), time).collect_and_set_reminder_suggestions();
+                            }
+                            else {
+
+                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
+                                SharedPreferences.Editor editor = prefs.edit();
+                                editor.putBoolean("smart_reminding", true);
+                                editor.commit();
                                 new SmartReminding(preference.getContext()).collect_and_set_reminder_suggestions();
+                            }
+                            //Startup the server
+
+                            //get database reference
+                            DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();
+
+                            //get android device's unique id
+                            //get android device's unique id or name
+                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                            Boolean smart_login = sharedPreferences.getBoolean("smart_login",false);
+                            String smart_login_name = sharedPreferences.getString("smart_login_name",null);
+                            final String  android_id;
+                            if (smart_login){
+                                android_id=smart_login_name;
+                            }else{
+                                android_id= Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+
+                            }
+                            mDatabase.child(android_id).child("smart_reminding").setValue(true);
+                            mDatabase.child(android_id).child("prompts_accepted").setValue(0);
+                            mDatabase.child(android_id).child("total_prompts").setValue(0);
+                            mDatabase.child(android_id).child("weekly_prompts_accepted").setValue(0);
+                            mDatabase.child(android_id).child("two_week_prompts_accepted").setValue(0);
+                            mDatabase.child(android_id).child("monthly_prompts_accepted").setValue(0);
+                            mDatabase.child(android_id).child("weekly_prompts").setValue(0);
+                            mDatabase.child(android_id).child("two_week_prompts").setValue(0);
+                            mDatabase.child(android_id).child("monthly_prompts").setValue(0);
+
                         } else {
+                            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putBoolean("smart_reminding", false);
+                            editor.commit();
                             new SmartReminding(preference.getContext()).disable_smart_reminders();
                         }
                         return true;
@@ -543,10 +608,142 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     }
                 });
             }
+
+            //Add a test notification for a weekly reminder
+            testReminderButton = this.findPreference("testReminderButton");
+            testReminderButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    DateTime time= DateTime.now();
+                    BaseReminder rem = new BaseReminder();
+                    rem.setReminderType(ReminderType.SMART);//Set ReminderType
+                    rem.setPromptLevel(2);
+
+                    rem.setNotes("You had an alarm on "+new DateTime(rem.getDateTime()).toDate()+". Do you want to set a new one?");
+                    rem.setTitle("Barber");
+                    rem.setDateTime(time.getMillis());//Set the time
+                    rem.setNotificationScale(NotificationScale.SAMETIME);//Set scale
+                    rem.setPattern(ReminderPattern.WEEKLY);
+                    new SmartReminding(preference.getContext()).add_test_reminder(rem);
+                    Toast.makeText(preference.getContext(),"Test prompt added",Toast.LENGTH_SHORT);
+                    return true;
+                }
+            });
+
+            resetDatabaseButton = this.findPreference("resetDatabaseButton");
+            resetDatabaseButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    //get database reference
+                    DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();
+
+                    //get android device's unique id
+                    //get android device's unique id or name
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    Boolean smart_login = sharedPreferences.getBoolean("smart_login",false);
+                    String smart_login_name = sharedPreferences.getString("smart_login_name",null);
+                    final String  android_id;
+                    if (smart_login){
+                        android_id=smart_login_name;
+                    }else{
+                        android_id= Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+
+                    }
+
+                    mDatabase.child(android_id).child("prompts_accepted").setValue(0);
+                    mDatabase.child(android_id).child("total_prompts").setValue(0);
+                    mDatabase.child(android_id).child("weekly_prompts_accepted").setValue(0);
+                    mDatabase.child(android_id).child("two_week_prompts_accepted").setValue(0);
+                    mDatabase.child(android_id).child("monthly_prompts_accepted").setValue(0);
+                    mDatabase.child(android_id).child("weekly_prompts").setValue(0);
+                    mDatabase.child(android_id).child("two_week_prompts").setValue(0);
+                    mDatabase.child(android_id).child("monthly_prompts").setValue(0);
+                    Toast.makeText(preference.getContext(),"Reset Database Complete",Toast.LENGTH_SHORT);
+                    return true;
+                }
+            });
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    public static class SmartLoginFragment extends PreferenceFragment {
 
+        public class User {
 
+            public String username;
+            public String email;
+
+            public User(String username) {
+                this.username = username;
+            }
+
+            public User(String username, String email) {
+                this.username = username;
+                this.email = email;
+            }
+
+        }
+
+        Preference textBox;
+        Preference loginCheckBox;
+        String name="Bob";
+        private String android_id ;
+        private DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference();
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.smart_login);
+            this.android_id=Secure.getString(getContext().getContentResolver(),Secure.ANDROID_ID);
+            //Add change listener to textbox
+            textBox = this.findPreference("login_name_preference");
+            if (textBox != null) {
+                textBox.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        name=newValue.toString();
+                        if (newValue.toString().equals("") || newValue.toString().equals(null)){
+                            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putBoolean("smart_login", false);
+                            editor.putString("smart_login_name", null);
+                            editor.commit();
+                        }else {
+                            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putBoolean("smart_login", true);
+                            editor.putString("smart_login_name", name);
+                            editor.commit();
+                        }
+                        return true;
+                    }
+                });
+            }
+
+            //Add change listener to loginCheckBox
+            loginCheckBox = this.findPreference("data_collection_preference");
+            if (loginCheckBox != null) {
+                loginCheckBox.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        if (newValue.toString().equals("true")){
+                            mDatabase.child(android_id).child("smart_reminding").setValue(true);
+                            mDatabase.child(android_id).child("prompts_accepted").setValue(0);
+                            mDatabase.child(android_id).child("total_prompts").setValue(0);
+                            mDatabase.child(android_id).child("weekly_prompts_accepted").setValue(0);
+                            mDatabase.child(android_id).child("two_week_prompts_accepted").setValue(0);
+                            mDatabase.child(android_id).child("monthly_prompts_accepted").setValue(0);
+                            mDatabase.child(android_id).child("weekly_prompts").setValue(0);
+                            mDatabase.child(android_id).child("two_week_prompts").setValue(0);
+                            mDatabase.child(android_id).child("monthly_prompts").setValue(0);
+                        }else{
+                            mDatabase.child(android_id).child("smart_reminding").setValue(false);
+                        }
+                        return true;
+                    }
+                });
+            }
+        }
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override

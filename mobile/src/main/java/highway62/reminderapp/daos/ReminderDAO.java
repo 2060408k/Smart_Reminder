@@ -14,6 +14,7 @@ import highway62.reminderapp.constants.Day;
 import highway62.reminderapp.constants.DurationScale;
 import highway62.reminderapp.constants.EventType;
 import highway62.reminderapp.constants.NotificationScale;
+import highway62.reminderapp.constants.ReminderPattern;
 import highway62.reminderapp.constants.ReminderType;
 import highway62.reminderapp.reminders.BaseLogReminder;
 import highway62.reminderapp.reminders.BaseReminder;
@@ -52,6 +53,10 @@ public class ReminderDAO extends BaseDAO {
 
         if (reminder.isDurationSet()) {
             values.put(DBContract.ReminderTable.COLUMN_DURATION_SET, 1);
+        }
+
+        if (reminder.getSmartReminded()) {
+            values.put(DBContract.ReminderTable.COLUMN_SMART_REMINDED, 1);
         }
 
         if (reminder.getEventDurationTime() != -1) {
@@ -100,6 +105,11 @@ public class ReminderDAO extends BaseDAO {
         if (reminder.getReminderType() != null) {
             values.put(DBContract.ReminderTable.COLUMN_REMINDER_TYPE, reminder.getReminderType().name());
             values_log.put(DBContract.ReminderLogTable.COLUMN_REMINDER_TYPE, reminder.getReminderType().name());
+        }
+
+        if (reminder.getPattern() != null) {
+            values.put(DBContract.ReminderTable.COLUMN_PATTERN_TYPE, reminder.getPattern().name());
+            values_log.put(DBContract.ReminderLogTable.COLUMN_PATTERN_TYPE, reminder.getPattern().name());
         }
 
         // Add time reminder was set to the log
@@ -165,6 +175,8 @@ public class ReminderDAO extends BaseDAO {
                 DBContract.ReminderTable.COLUMN_PROMPT_LEVEL,
                 DBContract.ReminderTable.COLUMN_EVENT_TYPE,
                 DBContract.ReminderTable.COLUMN_REMINDER_TYPE,
+                DBContract.ReminderTable.COLUMN_PATTERN_TYPE,
+                DBContract.ReminderTable.COLUMN_SMART_REMINDED,
                 DBContract.ReminderTable.COLUMN_LOG_ID
         };
 
@@ -218,6 +230,14 @@ public class ReminderDAO extends BaseDAO {
                 reminder.setDurationSet(true);
             }
 
+            if (cursor.getInt(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_SMART_REMINDED)) > 0 ){
+                reminder.setSmartReminded(true);
+            }
+
+            if (cursor.getInt(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_SMART_REMINDED)) > 0) {
+                reminder.setSmartReminded(true);
+            }
+
             if (cursor.getInt(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_DURATION_TIME)) >= 0) {
                 reminder.setEventDurationTime(cursor.getInt(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_DURATION_TIME)));
             }
@@ -256,6 +276,10 @@ public class ReminderDAO extends BaseDAO {
 
             if (!cursor.isNull(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_REMINDER_TYPE))) {
                 reminder.setReminderType(ReminderType.valueOf(cursor.getString(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_REMINDER_TYPE))));
+            }
+
+            if (!cursor.isNull(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_PATTERN_TYPE))) {
+                reminder.setPattern(ReminderPattern.valueOf(cursor.getString(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_PATTERN_TYPE))));
             }
 
             if (cursor.getLong(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_LOG_ID)) >= 0) {
@@ -339,6 +363,8 @@ public class ReminderDAO extends BaseDAO {
                 DBContract.ReminderTable.COLUMN_PROMPT_LEVEL,
                 DBContract.ReminderTable.COLUMN_EVENT_TYPE,
                 DBContract.ReminderTable.COLUMN_REMINDER_TYPE,
+                DBContract.ReminderTable.COLUMN_PATTERN_TYPE,
+                DBContract.ReminderTable.COLUMN_SMART_REMINDED,
                 DBContract.ReminderTable.COLUMN_LOG_ID
         };
 
@@ -386,6 +412,10 @@ public class ReminderDAO extends BaseDAO {
                     reminder.setDurationSet(true);
                 }
 
+                if (cursor.getInt(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_SMART_REMINDED)) >0 ){
+                    reminder.setSmartReminded(true);
+                }
+
                 if (cursor.getInt(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_DURATION_TIME)) >= 0) {
                     reminder.setEventDurationTime(cursor.getInt(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_DURATION_TIME)));
                 }
@@ -424,6 +454,10 @@ public class ReminderDAO extends BaseDAO {
 
                 if (!cursor.isNull(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_REMINDER_TYPE))) {
                     reminder.setReminderType(ReminderType.valueOf(cursor.getString(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_REMINDER_TYPE))));
+                }
+
+                if (!cursor.isNull(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_PATTERN_TYPE))) {
+                    reminder.setPattern(ReminderPattern.valueOf(cursor.getString(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_PATTERN_TYPE))));
                 }
 
                 if (cursor.getLong(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_LOG_ID)) >= 0) {
@@ -495,7 +529,8 @@ public class ReminderDAO extends BaseDAO {
                 DBContract.ReminderTable.COLUMN_NOTES,
                 DBContract.ReminderTable.COLUMN_PROMPT_LEVEL,
                 DBContract.ReminderTable.COLUMN_LOG_ID,
-                DBContract.ReminderTable.COLUMN_REMINDER_TYPE
+                DBContract.ReminderTable.COLUMN_REMINDER_TYPE,
+                DBContract.ReminderTable.COLUMN_PATTERN_TYPE
         };
 
         // Columns for the where clause
@@ -540,6 +575,10 @@ public class ReminderDAO extends BaseDAO {
 
                 if (!cursor.isNull(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_REMINDER_TYPE))) {
                     reminder.setReminderType(ReminderType.valueOf(cursor.getString(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_REMINDER_TYPE))));
+                }
+
+                if (!cursor.isNull(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_PATTERN_TYPE))) {
+                    reminder.setPattern(ReminderPattern.valueOf(cursor.getString(cursor.getColumnIndex(DBContract.ReminderTable.COLUMN_PATTERN_TYPE))));
                 }
 
                 // Add reminder to the list
@@ -591,6 +630,12 @@ public class ReminderDAO extends BaseDAO {
             values.put(DBContract.ReminderTable.COLUMN_DURATION_SET, 1);
         } else {
             values.put(DBContract.ReminderTable.COLUMN_DURATION_SET, 0);
+        }
+
+        if (reminder.getSmartReminded()) {
+           values.put(DBContract.ReminderTable.COLUMN_SMART_REMINDED,1);
+        } else {
+            values.put(DBContract.ReminderTable.COLUMN_SMART_REMINDED,0);
         }
 
         if (reminder.getEventDurationTime() != -1) {

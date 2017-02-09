@@ -9,6 +9,7 @@ import highway62.reminderapp.constants.Day;
 import highway62.reminderapp.constants.DurationScale;
 import highway62.reminderapp.constants.EventType;
 import highway62.reminderapp.constants.NotificationScale;
+import highway62.reminderapp.constants.ReminderPattern;
 import highway62.reminderapp.constants.ReminderType;
 
 /**
@@ -17,6 +18,7 @@ import highway62.reminderapp.constants.ReminderType;
 public class BaseReminder implements Parcelable {
 
     private long id = -1;
+
 
     private String title;
     private String eventAfter;
@@ -34,7 +36,13 @@ public class BaseReminder implements Parcelable {
     private int promptLevel = -1;
     private EventType type;
     private ReminderType reminderType;
+    private ReminderPattern pattern;
+    private Boolean smartReminded=false;
     private long logID = -1;
+
+
+
+
 
     public BaseReminder(){}
 
@@ -52,6 +60,7 @@ public class BaseReminder implements Parcelable {
         this.type = copy.getType();
         this.reminderType = copy.getReminderType();
     }
+
 
 
 
@@ -203,6 +212,22 @@ public class BaseReminder implements Parcelable {
         this.logID = logID;
     }
 
+    public void setPattern(ReminderPattern pattern) {
+        this.pattern = pattern;
+    }
+
+    public ReminderPattern getPattern() {
+        return pattern;
+    }
+
+    public Boolean getSmartReminded() {
+        return smartReminded;
+    }
+
+    public void setSmartReminded(Boolean smartReminded) {
+        this.smartReminded = smartReminded;
+    }
+
     protected BaseReminder(Parcel in) {
         id = in.readLong();
         title = (String) in.readValue(String.class.getClassLoader());
@@ -232,6 +257,9 @@ public class BaseReminder implements Parcelable {
         promptLevel = in.readInt();
         type = (EventType) in.readValue(EventType.class.getClassLoader());
         reminderType = (ReminderType) in.readValue(ReminderType.class.getClassLoader());
+        pattern = (ReminderPattern) in.readValue(ReminderPattern.class.getClassLoader());
+        byte smartRemindedVal = in.readByte();
+        smartReminded = smartRemindedVal == 0x02 ? null : smartRemindedVal != 0x00;
         logID = in.readLong();
     }
 
@@ -267,6 +295,12 @@ public class BaseReminder implements Parcelable {
         dest.writeInt(promptLevel);
         dest.writeValue(type);
         dest.writeValue(reminderType);
+        dest.writeValue(pattern);
+        if (smartReminded == null) {
+            dest.writeByte((byte) (0x02));
+        } else {
+            dest.writeByte((byte) (smartReminded ? 0x01 : 0x00));
+        }
         dest.writeLong(logID);
     }
 
