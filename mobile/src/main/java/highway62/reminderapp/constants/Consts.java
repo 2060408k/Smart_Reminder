@@ -12,6 +12,7 @@ public final class Consts {
      */
     public static final String REMINDER_INTENT = "REMINDER_INTENT";
     public static final String REMINDER_SUGGEST = "REMINDER_SUGGEST";
+    public static final String REMINDER_PAST = "PAST_ALARM";
     /**
      * Array of days to index into day of week strings
      */

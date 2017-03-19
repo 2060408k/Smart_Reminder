@@ -41,6 +41,7 @@ import highway62.reminderapp.adminSettings.SettingsActivity;
 import highway62.reminderapp.adminSettings.SettingsInterface;
 import highway62.reminderapp.adminSettings.SettingsPasswordDialog;
 import highway62.reminderapp.adminSettings.SettingsPasswordListener;
+import highway62.reminderapp.constants.Consts;
 import highway62.reminderapp.constants.EventType;
 import highway62.reminderapp.constants.HandlerType;
 import highway62.reminderapp.constants.ReminderPattern;
@@ -53,6 +54,7 @@ import highway62.reminderapp.fragmentHandlers.NDFragmentHandler;
 import highway62.reminderapp.fragments.BSDTIntroFragment;
 import highway62.reminderapp.fragments.NDDTIntroFragment;
 import highway62.reminderapp.fragments.SuggestionTabFragment;
+import highway62.reminderapp.marshalling.*;
 import highway62.reminderapp.reminderhandlers.ReminderHandler;
 import highway62.reminderapp.reminders.BaseReminder;
 import highway62.reminderapp.tablisteners.TabListener;
@@ -70,17 +72,20 @@ public class ReminderActivity extends AppCompatActivity implements DecisionTreeL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("ReminderActivity started");
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             Intent intent =getIntent();
-            if(extras == null)
-            {
-                System.out.println("//Cry about not being clicked on");
-            }
+
             if (extras!=null && extras.getBoolean("NotiClick") && (ReminderPattern) intent.getSerializableExtra("pattern")!=null)
             {
+
                 sendToServerNotificationFeedback((ReminderPattern) intent.getSerializableExtra("pattern"));
+            }
+            byte[] bytes = getIntent().getByteArrayExtra(Consts.REMINDER_PAST);
+            if(bytes!=null){
+                BaseReminder reminder= (BaseReminder) ParcelableUtil.toParcelable(bytes,BaseReminder.CREATOR);
+                reminder.setSmartReminded(true);// set the old reminder as smart reminded so it doesn't fire off again
+                ReminderHandler.updateReminder(getBaseContext(),reminder);
             }
         }
         super.onCreate(savedInstanceState);
@@ -154,7 +159,6 @@ public class ReminderActivity extends AppCompatActivity implements DecisionTreeL
         View view = LayoutInflater.from(context).inflate(R.layout.tabs_bg, null);
         TextView tv = (TextView) view.findViewById(R.id.tabsText);
         ImageView iv = (ImageView) view.findViewById(R.id.tabsImage);
-        tv.setText(text);
         iv.setImageResource(imgRes);
         return view;
     }

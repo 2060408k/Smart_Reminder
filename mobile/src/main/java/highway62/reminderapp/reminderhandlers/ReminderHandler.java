@@ -4,13 +4,18 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import highway62.reminderapp.ParcelableUtil;
 import highway62.reminderapp.constants.Consts;
 import highway62.reminderapp.constants.Day;
 import highway62.reminderapp.constants.EventType;
@@ -58,7 +63,7 @@ public class ReminderHandler {
         return reminderDAO.getAllReminders();
     }
 
-    public static void setReminder(Context context, BaseReminder reminder) {
+    public static void setReminder(Context context, BaseReminder reminder,BaseReminder ...past) {
         // Check if DB exists, if not call createDB()
         ReminderDAO reminderDAO = createDatabase(context);
 
@@ -68,11 +73,14 @@ public class ReminderHandler {
         if (rem_id > 0) {
             BaseReminder reminderWithID = reminderDAO.getReminder(rem_id);
             if (reminderWithID.getReminderType().equals(ReminderType.REMINDER)) {
-                System.out.println(" Adding REMINDER type");
                 setReminderAlarm(context, reminderWithID);
             } else {
-                System.out.println(" Adding PROMPT type");
-                setPromptAlarm(context, reminderWithID);
+                if (past.length>0 && past[0]!= null){
+                    setPromptAlarm(context, reminderWithID,past[0]);
+                }else{
+                    setPromptAlarm(context, reminderWithID);
+                }
+
                 return;
             }
         } else {
@@ -292,21 +300,32 @@ public class ReminderHandler {
             }
         }
         // Set the alarm
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP
-                , dt.getMillis()
-                , getReminderIntent(context, reminder));
+
+        if (alarmManager != null) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP
+                    , dt.getMillis()
+                    , getReminderIntent(context, reminder));
+
+        }
     }
 
-    private static void setPromptAlarm(Context context, BaseReminder reminder) {
+    private static void setPromptAlarm(Context context, BaseReminder reminder,BaseReminder ...past) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         DateTime dt = new DateTime(reminder.getDateTime())
                 .withSecondOfMinute(0)
                 .withMillisOfSecond(0);
 
+        PendingIntent pIntent =null;
+        if (past.length>0 && past[0]!= null){
+            pIntent = getReminderIntent(context, reminder,past[0]);
+        }else{
+            pIntent = getReminderIntent(context, reminder);
+        }
+
         alarmManager.setExact(AlarmManager.RTC_WAKEUP
                 , dt.getMillis()
-                , getReminderIntent(context, reminder));
+                , pIntent);
     }
 
     private static void cancelAlarm(Context context, BaseReminder reminder) {
@@ -316,9 +335,18 @@ public class ReminderHandler {
         pIntent.cancel();
     }
 
-    private static PendingIntent getReminderIntent(Context context, BaseReminder reminder) {
+    private static PendingIntent getReminderIntent(Context context, BaseReminder reminder,BaseReminder ... past) {
         Intent intent = new Intent(context, ReminderReceiver.class);
-        intent.putExtra(Consts.REMINDER_INTENT, reminder);
+        if (Build.VERSION.SDK_INT <= 23) {
+            intent.putExtra(Consts.REMINDER_INTENT, reminder);
+        }else {
+            byte[] bytes = ParcelableUtil.toByteArray(reminder);
+            intent.putExtra(Consts.REMINDER_INTENT,bytes);
+        }
+        if (past.length>0 && past[0]!= null){
+            byte[] bytes = ParcelableUtil.toByteArray(past[0]);
+            intent.putExtra(Consts.REMINDER_PAST,bytes);
+        }
         return PendingIntent.getBroadcast(context, (int) reminder.getId(), intent, PendingIntent.FLAG_CANCEL_CURRENT);
     }
 

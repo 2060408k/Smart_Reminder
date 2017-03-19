@@ -12,6 +12,8 @@ import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Parcel;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -34,6 +36,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import highway62.reminderapp.ParcelableUtil;
 import highway62.reminderapp.PromptNotificationActivity;
 import highway62.reminderapp.R;
 import highway62.reminderapp.ReminderActivity;
@@ -56,19 +59,17 @@ public class ReminderReceiver extends BroadcastReceiver {
     private SettingsInterface settings;
     private Context context;
     private BaseReminder reminder;
+    private BaseReminder past_reminder;
     public static Vibrator vibrator;
     public static Ringtone ringTone;
     public static Thread vibThread;
     public static Thread soundThread;
     public static boolean ringToneCancelled = false;
 
-    public ReminderReceiver() {
-
-    }
+    public ReminderReceiver() {}
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
         this.context = context;
         boolean suggest=intent.getBooleanExtra(Consts.REMINDER_SUGGEST,false);
         if (suggest){
@@ -76,9 +77,19 @@ public class ReminderReceiver extends BroadcastReceiver {
             new SmartReminding(this.context).collect_and_set_reminder_suggestions();
             return;}
         this.settings = new SettingsInterface(context);
-        this.reminder = intent.getParcelableExtra(Consts.REMINDER_INTENT);
-        System.out.println("Fire "+this.reminder);
-        if (this.reminder==null) return;
+        if (Build.VERSION.SDK_INT >= 24){
+            byte[] bytes = intent.getByteArrayExtra(Consts.REMINDER_INTENT);
+            this.reminder = (BaseReminder) ParcelableUtil.toParcelable(bytes,BaseReminder.CREATOR);
+        }else {
+            this.reminder = (BaseReminder) intent.getParcelableExtra(Consts.REMINDER_INTENT);
+        }
+
+        //Get past reminder in case it's a SMART reminder
+        byte[] bytes = intent.getByteArrayExtra(Consts.REMINDER_PAST);
+        if(bytes!= null){
+            this.past_reminder= (BaseReminder) ParcelableUtil.toParcelable(bytes,BaseReminder.CREATOR);
+        }
+        if (this.reminder==null || this.reminder.getSmartReminded()) return;
         ringToneCancelled = false;
         displayReminder();
     }
@@ -87,19 +98,16 @@ public class ReminderReceiver extends BroadcastReceiver {
         if (settings.sendToWatchSet() && reminder!=null) {
             sendReminderToWatch(reminder);
         }
-
         ReminderType type = reminder.getReminderType();
         if (settings.useDefaultLevelsIsSet()) {
             type = null;
         }
-
         int level = reminder.getPromptLevel();
         if (level == -1) {
             level = settings.getDefaultUserSubtletyLevel();
         }
         // Reminder Visual -----------------------------------------------------------------------//
         if (settings.visualEnabledIsSet(level, type) || type==ReminderType.SMART) {
-
             Consts.VisualChoice visChoice = settings.getVisualChoice(level, type);
             if(type==ReminderType.SMART) visChoice= Consts.VisualChoice.NOTIFICATION;
             switch (visChoice) {
@@ -158,7 +166,6 @@ public class ReminderReceiver extends BroadcastReceiver {
             List<String> itemList = new ArrayList<String>(Arrays.asList(items));
 
             for (String text : itemList){
-                System.out.println(text);
                 inboxStyle.addLine(text);
             }
 
@@ -166,12 +173,18 @@ public class ReminderReceiver extends BroadcastReceiver {
         }
         Intent resultIntent;
         if (reminder.getReminderType().equals(ReminderType.REMINDER)) {
+
             resultIntent = new Intent(context, ReminderDetailActivity.class);
             resultIntent.putExtra(Consts.REMINDER_INTENT, reminder);
         } else {
             resultIntent = new Intent(context, ReminderActivity.class);
-            if (reminder.getReminderType().equals(ReminderType.SMART)){
+            if (this.past_reminder!=null){
+                byte[] bytes=ParcelableUtil.toByteArray(this.past_reminder);
+                resultIntent.putExtra(Consts.REMINDER_PAST,bytes);
+            }
 
+
+            if (reminder.getReminderType().equals(ReminderType.SMART)){
                 resultIntent.putExtra("NotiClick",true);
                 resultIntent.putExtra("pattern",reminder.getPattern());
 
@@ -206,7 +219,7 @@ public class ReminderReceiver extends BroadcastReceiver {
                         if (check)
                             dataSnapshot.getRef().child(android_id).child("total_prompts").setValue(value);
                             ReminderPattern pattern=reminder.getPattern();
-                            System.out.println("Recevied " + pattern);
+
                             if (pattern!=null){
                                 if (pattern.equals(ReminderPattern.WEEKLY))
                                     dataSnapshot.getRef().child(android_id).child("weekly_prompts").setValue(weekly_value);

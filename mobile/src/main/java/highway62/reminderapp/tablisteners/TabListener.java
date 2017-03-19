@@ -53,7 +53,6 @@ public class TabListener implements TabHost.OnTabChangeListener {
 
     @Override
     public void onTabChanged(String tabId) {
-        System.out.println(tabId);
         if (context.getString(R.string.reminder_tab_text).equals(tabId)) {
             // Change Color
             setReminderActiveFilter();

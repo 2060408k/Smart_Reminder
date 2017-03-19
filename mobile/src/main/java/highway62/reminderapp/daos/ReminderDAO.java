@@ -701,12 +701,15 @@ public class ReminderDAO extends BaseDAO {
             // Re-open db (deletRepeatDays closes it)
             db = this.getWritableDatabase();
             //Re-enter days
-            for (Day d : reminder.getRepetitionDays()) {
-                ContentValues dayValues = new ContentValues();
-                dayValues.put(DBContract.ReminderDayTable.COLUMN_REMINDER_ID, reminder.getId());
-                dayValues.put(DBContract.ReminderDayTable.COLUMN_DAY, d.name());
-                db.insert(DBContract.ReminderDayTable.TABLE_NAME, null, dayValues);
+            if (reminder.getRepetitionDays()!=null){
+                for (Day d : reminder.getRepetitionDays()) {
+                    ContentValues dayValues = new ContentValues();
+                    dayValues.put(DBContract.ReminderDayTable.COLUMN_REMINDER_ID, reminder.getId());
+                    dayValues.put(DBContract.ReminderDayTable.COLUMN_DAY, d.name());
+                    db.insert(DBContract.ReminderDayTable.TABLE_NAME, null, dayValues);
+                }
             }
+
         }
 
         db.close();
@@ -836,12 +839,15 @@ public class ReminderDAO extends BaseDAO {
             // DELETE REMINDER REPEAT LOG DAYS AND RE-ENTER
             deleteRepeatLogDays(reminder.getLogID());
             //Re-enter days
-            for (Day d : reminder.getRepetitionDays()) {
-                ContentValues dayValues = new ContentValues();
-                dayValues.put(DBContract.ReminderDayLogTable.COLUMN_REMINDER_ID, reminder.getId());
-                dayValues.put(DBContract.ReminderDayLogTable.COLUMN_DAY, d.name());
-                db.insert(DBContract.ReminderDayLogTable.TABLE_NAME, null, dayValues);
+            if(reminder.getRepetitionDays()!=null){
+                for (Day d : reminder.getRepetitionDays()) {
+                    ContentValues dayValues = new ContentValues();
+                    dayValues.put(DBContract.ReminderDayLogTable.COLUMN_REMINDER_ID, reminder.getId());
+                    dayValues.put(DBContract.ReminderDayLogTable.COLUMN_DAY, d.name());
+                    db.insert(DBContract.ReminderDayLogTable.TABLE_NAME, null, dayValues);
+                }
             }
+
         }
 
         db.close();

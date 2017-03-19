@@ -69,19 +69,13 @@ public class SmartReminding {
     public ArrayList<ArrayList<BaseReminder>> getAllSuggestions(){
         ArrayList<ArrayList<BaseReminder>> out = new ArrayList<ArrayList<BaseReminder>>();
         out.add(one_week_pattern());
-
         out.add(two_week_pattern());
-
         out.add(one_month_pattern());
-
-        System.out.println(one_month_pattern().size());
-        System.out.println(two_week_pattern().size());
-        System.out.println(one_month_pattern().size());
         return out;
     }
 
     public void collect_and_set_reminder_suggestions(){
-        if (!this.enabled) {System.out.println("There is no meow in the TOILET");return;}
+        if (!this.enabled) return;
         ArrayList<ArrayList<BaseReminder>> lists = new ArrayList<ArrayList<BaseReminder>>();
         lists.add(one_week_pattern());
         lists.add(two_week_pattern());
@@ -159,7 +153,8 @@ public class SmartReminding {
             DateTime dt1 = new DateTime(reminder.getDateTime());
             if ( ( (dt1.getDayOfYear() == date1.getDayOfYear()) ||((dt1.getDayOfYear() == date2.getDayOfYear()) && (dt1.getHourOfDay()<=time)))
                     && (dt1.getYear() == date1.getYear())
-                    && (!reminder.getSmartReminded())) {
+                    && (!reminder.getSmartReminded())
+                    && (reminder.getReminderType()!=ReminderType.SMART)) {
                 reminder.setPattern(pattern);
                 pattern_list.add(reminder);
             }
@@ -212,9 +207,8 @@ public class SmartReminding {
 
         //Limit the reminder patters looking at the user preference
         reminders=get_Modified_Pattern_Reminders(reminders);
-        if (reminders==null) {System.out.println("Reminders in add notifications are null");}
+
         for (ArrayList<BaseReminder> reminder_list : reminders){
-            if (reminder_list==null){System.out.println("Reminder list in add notidications is null");}
             for (BaseReminder reminder : reminder_list){
                 BaseReminder rem = new BaseReminder();
                 rem.setReminderType(ReminderType.SMART);//Set ReminderType
@@ -236,12 +230,11 @@ public class SmartReminding {
                 rem.setDateTime(DateTime.now().getMillis());//Set the time
                 rem.setNotificationScale(NotificationScale.SAMETIME);//Set scale
                 rem.setPattern(reminder.getPattern());
-                System.out.println("Adding a notification for now with "+reminder.getPattern());
-                ReminderHandler.setReminder(this.context,rem);
-                reminder.setSmartReminded(true);// set the old reminder as smart reminded so it doesn't fire off again
-                ReminderHandler.updateReminder(context,reminder);
+                ReminderHandler.setReminder(this.context,rem,reminder);
+
             }
         }
+
         BaseReminder r= new BaseReminder(DateTime.now().getMillis());
         r.setReminderType(ReminderType.PROMPT);
         r.setDateTime(DateTime.now().getMillis());//Set the time
@@ -261,11 +254,8 @@ public class SmartReminding {
     };
 
     public ArrayList<ArrayList<BaseReminder>> get_Modified_Pattern_Reminders(ArrayList<ArrayList<BaseReminder>> reminders){
-        System.out.println(reminders);
-        if (reminders == null ) System.out.println("reminders in get_modified is null");
         //get database reference
         DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();
-        //get android device's unique id
         //get android device's unique id or name
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
         Boolean smart_login = sharedPreferences.getBoolean("smart_login",false);
@@ -314,9 +304,50 @@ public class SmartReminding {
 
                         //Set counts based on the ratios of the patterns
                         //The multiplication by 5 sets the reminders to never pass the maximum of 6 reminders
-                        int outbound_weekly_reminders_count = (int)Math.floor(weekly_prompts_used_ratio*5);
-                        int outbound_two_week_reminders_count = (int)Math.floor(two_week_prompts_used_ratio*5);
-                        int outbound_monthly_reminders_count = (int)Math.floor(monthly_prompts_used_ratio*5);
+                        int outbound_weekly_reminders_count = 1;
+                        int outbound_two_week_reminders_count = 1;
+                        int outbound_monthly_reminders_count = 1;
+
+
+                        ArrayList<Double> ratio_list= new ArrayList<Double>();
+                        ratio_list.add(weekly_prompts_used_ratio);
+                        ratio_list.add(two_week_prompts_used_ratio);
+                        ratio_list.add(monthly_prompts_used_ratio);
+                        int rem=0;
+                        double val=0;
+
+                        for (int i=0;i<ratio_list.size();i++){
+                            double ratio=ratio_list.get(i);
+                            if (ratio>=val){
+                                rem = i;
+                                val = ratio;
+                            }
+                        }
+                        if (rem==0) {
+                            outbound_weekly_reminders_count+=2;
+                        }else if (rem==1){
+                            outbound_two_week_reminders_count+=2;
+                        }else{
+                            outbound_monthly_reminders_count+=2;
+                        }
+                        ratio_list.remove(rem);
+                        rem=0;
+                        val=0;
+
+                        for (int i=0;i<ratio_list.size();i++){
+                            double ratio=ratio_list.get(i);
+                            if (ratio>=val){
+                                rem = i;
+                                val = ratio;
+                            }
+                        }
+                        if (rem==0) {
+                            outbound_weekly_reminders_count+=1;
+                        }else if (rem==1){
+                            outbound_two_week_reminders_count+=1;
+                        }else{
+                            outbound_monthly_reminders_count+=1;
+                        }
 
                         //Add to the final reminder list the limited amount of reminders
                         ArrayList<BaseReminder> list=new ArrayList<BaseReminder>();
@@ -342,15 +373,15 @@ public class SmartReminding {
             public void onCancelled(DatabaseError firebaseError) {
             }
         });
-        if (reminders == null ) System.out.println("return reminders in get_modified is null");
-        if (final_reminder_list == null ) System.out.println("final_reminder_list in get_modified is null");
+
+
         if (final_reminder_list.size()>0 ) {
-            System.out.println("Returning final_reminder_list");
             return final_reminder_list;
         } else {
-            System.out.println("Returning reminders");
             return reminders;
         }
 
     }
+
+
 }

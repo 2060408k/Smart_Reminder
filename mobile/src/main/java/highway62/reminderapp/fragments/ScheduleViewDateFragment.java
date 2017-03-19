@@ -64,19 +64,6 @@ public class ScheduleViewDateFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_schedule_view_date, container, false);
         reminderList = (ListView) v.findViewById(R.id.scheduleList);
 
-//        System.out.println("yoleleis");
-//        System.out.println(this.reminders);
-//        BaseReminder it=null;
-//        int i=0;
-//        while (i<this.reminders.size()){
-//            it = this.reminders.get(i);
-//            BaseReminder rem = (BaseReminder) it;
-//            DateTime dt = new DateTime(rem.getDateTime())
-//                    .withSecondOfMinute(0)
-//                    .withMillisOfSecond(0);
-//            System.out.println(dt);
-//            i++;
-//        }
         ScheduleAdapter adapter = new ScheduleAdapter(context, handler, reminders);
         dateTitle = (TextView) v.findViewById(R.id.schedule_date_title);
         if(dateSelected != null){

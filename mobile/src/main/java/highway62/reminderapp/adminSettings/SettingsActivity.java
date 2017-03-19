@@ -163,8 +163,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 || PromptLevelPreferenceFragment.class.getName().equals(fragmentName)
                 || UPPreferenceFragment.class.getName().equals(fragmentName)
                 || LoggingOptionsFragment.class.getName().equals(fragmentName)
-                || SmartRemindingFragment.class.getName().equals(fragmentName)
-                || SmartLoginFragment.class.getName().equals(fragmentName);
+                || SmartRemindingFragment.class.getName().equals(fragmentName);
     }
 
     /////////////////////////////////// PREFERENCE FRAGMENTS ///////////////////////////////////////
@@ -496,9 +495,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     public static class SmartRemindingFragment extends PreferenceFragment {
         Preference checkBox;
         Preference timeList;
-        Preference testRemindCheckbox;
-        Preference testReminderButton;
-        Preference resetDatabaseButton;
+        Preference textBox;
+        private String android_id ;
+        String name="Bob";
+
+
+
         Integer time;
 
         @Override
@@ -584,115 +586,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 });
             }
 
-            testRemindCheckbox=this.findPreference("test_reminders_preference");
-            if (testRemindCheckbox != null) {
-                testRemindCheckbox.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                    @Override
-                    public boolean onPreferenceChange(Preference preference, Object newValue) {
-                        if (newValue.toString().equals("true")) {
-                            //1 week
-                            BaseReminder r = new BaseReminder();
-                            r.setDateTime(DateTime.now().minusDays(7).getMillis());
-                            r.setReminderType(ReminderType.REMINDER);
-                            r.setType(EventType.GEN);
-                            r.setTitle("Test");
-                            ReminderHandler.setReminder(preference.getContext(),r);
-                            //2 weeks
-                            r.setDateTime(DateTime.now().minusDays(14).getMillis());
-                            ReminderHandler.setReminder(preference.getContext(),r);
-                            //1 month
-                            r.setDateTime(DateTime.now().minusMonths(1).getMillis());
-                            ReminderHandler.setReminder(preference.getContext(),r);
-                        }
-                        return true;
-                    }
-                });
-            }
-
-            //Add a test notification for a weekly reminder
-            testReminderButton = this.findPreference("testReminderButton");
-            testReminderButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    DateTime time= DateTime.now();
-                    BaseReminder rem = new BaseReminder();
-                    rem.setReminderType(ReminderType.SMART);//Set ReminderType
-                    rem.setPromptLevel(2);
-
-                    rem.setNotes("You had an alarm on "+new DateTime(rem.getDateTime()).toDate()+". Do you want to set a new one?");
-                    rem.setTitle("Barber");
-                    rem.setDateTime(time.getMillis());//Set the time
-                    rem.setNotificationScale(NotificationScale.SAMETIME);//Set scale
-                    rem.setPattern(ReminderPattern.WEEKLY);
-                    new SmartReminding(preference.getContext()).add_test_reminder(rem);
-                    Toast.makeText(preference.getContext(),"Test prompt added",Toast.LENGTH_SHORT);
-                    return true;
-                }
-            });
-
-            resetDatabaseButton = this.findPreference("resetDatabaseButton");
-            resetDatabaseButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    //get database reference
-                    DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();
-
-                    //get android device's unique id
-                    //get android device's unique id or name
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                    Boolean smart_login = sharedPreferences.getBoolean("smart_login",false);
-                    String smart_login_name = sharedPreferences.getString("smart_login_name",null);
-                    final String  android_id;
-                    if (smart_login){
-                        android_id=smart_login_name;
-                    }else{
-                        android_id= Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-
-                    }
-
-                    mDatabase.child(android_id).child("prompts_accepted").setValue(0);
-                    mDatabase.child(android_id).child("total_prompts").setValue(0);
-                    mDatabase.child(android_id).child("weekly_prompts_accepted").setValue(0);
-                    mDatabase.child(android_id).child("two_week_prompts_accepted").setValue(0);
-                    mDatabase.child(android_id).child("monthly_prompts_accepted").setValue(0);
-                    mDatabase.child(android_id).child("weekly_prompts").setValue(0);
-                    mDatabase.child(android_id).child("two_week_prompts").setValue(0);
-                    mDatabase.child(android_id).child("monthly_prompts").setValue(0);
-                    Toast.makeText(preference.getContext(),"Reset Database Complete",Toast.LENGTH_SHORT);
-                    return true;
-                }
-            });
-        }
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    public static class SmartLoginFragment extends PreferenceFragment {
-
-        public class User {
-
-            public String username;
-            public String email;
-
-            public User(String username) {
-                this.username = username;
-            }
-
-            public User(String username, String email) {
-                this.username = username;
-                this.email = email;
-            }
-
-        }
-
-        Preference textBox;
-        Preference loginCheckBox;
-        String name="Bob";
-        private String android_id ;
-        private DatabaseReference mDatabase=FirebaseDatabase.getInstance().getReference();
-
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.smart_login);
             this.android_id=Secure.getString(getContext().getContentResolver(),Secure.ANDROID_ID);
             //Add change listener to textbox
             textBox = this.findPreference("login_name_preference");
@@ -719,31 +612,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 });
             }
 
-            //Add change listener to loginCheckBox
-            loginCheckBox = this.findPreference("data_collection_preference");
-            if (loginCheckBox != null) {
-                loginCheckBox.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                    @Override
-                    public boolean onPreferenceChange(Preference preference, Object newValue) {
-                        if (newValue.toString().equals("true")){
-                            mDatabase.child(android_id).child("smart_reminding").setValue(true);
-                            mDatabase.child(android_id).child("prompts_accepted").setValue(0);
-                            mDatabase.child(android_id).child("total_prompts").setValue(0);
-                            mDatabase.child(android_id).child("weekly_prompts_accepted").setValue(0);
-                            mDatabase.child(android_id).child("two_week_prompts_accepted").setValue(0);
-                            mDatabase.child(android_id).child("monthly_prompts_accepted").setValue(0);
-                            mDatabase.child(android_id).child("weekly_prompts").setValue(0);
-                            mDatabase.child(android_id).child("two_week_prompts").setValue(0);
-                            mDatabase.child(android_id).child("monthly_prompts").setValue(0);
-                        }else{
-                            mDatabase.child(android_id).child("smart_reminding").setValue(false);
-                        }
-                        return true;
-                    }
-                });
-            }
+
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override

@@ -24,7 +24,6 @@ public class SuggestionTab extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("MEOW");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.suggestion_tab);
 

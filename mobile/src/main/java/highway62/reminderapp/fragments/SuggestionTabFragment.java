@@ -13,15 +13,18 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.v7.widget.CardView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.vision.text.Line;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +42,7 @@ import highway62.reminderapp.ReminderActivity;
 import highway62.reminderapp.SmartReminding.MainOcr;
 import highway62.reminderapp.SmartReminding.SmartReminding;
 import highway62.reminderapp.SmartReminding.SuggestionTab;
+import highway62.reminderapp.constants.Consts;
 import highway62.reminderapp.constants.EventType;
 import highway62.reminderapp.constants.ReminderPattern;
 import highway62.reminderapp.constants.ReminderType;
@@ -102,36 +106,59 @@ public class SuggestionTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        System.out.println("ime mesa sto suggestiontabfragment oncreateview");
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_suggestion_tab, container, false);
+        final View view=inflater.inflate(R.layout.fragment_suggestion_tab, container, false);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.main_linear_layout);
 
         SmartReminding sm= new SmartReminding(getContext());
         ArrayList<ArrayList<BaseReminder>> suggestion_lists = sm.getAllSuggestions();
         for (ArrayList<BaseReminder> list : suggestion_lists){
+            int i=0;
             for (BaseReminder reminder : list){
+                i=i++;
+                final BaseReminder old_rem = reminder;
                 final BaseReminder rem =reminder;
-                System.out.println(reminder.getPattern() + " " + rem.getPattern());
                 final String title = reminder.getTitle();
                 final long dt_millis = reminder.getDateTime();
                 final DateTime dt = new DateTime(dt_millis);
-                final String date_string = dt.getDayOfMonth()+"/"+dt.getMonthOfYear()+"/"+dt.getYear()+ " at "+dt.getHourOfDay()+":"+dt.getMinuteOfHour();
-                final String date_string_today = new DateTime().getDayOfMonth()+"/"+new DateTime().getMonthOfYear()+"/"+new DateTime().getYear()+ " at "+dt.getHourOfDay()+":"+dt.getMinuteOfHour();
+
+                String minute=minute=""+dt.getMinuteOfHour();
+                if(dt.getMinuteOfHour()<=9) minute="0"+dt.getMinuteOfHour();
+                String hour=""+dt.getHourOfDay();
+                if(dt.getHourOfDay()<=9) hour = "0"+dt.getHourOfDay();
+                String month = ""+dt.getMonthOfYear();
+                if(dt.getMonthOfYear()<=9) month = "0" + dt.getMonthOfYear();
+                String new_month = ""+new DateTime().getMonthOfYear();
+                if(dt.getMonthOfYear()<=9) new_month = "0" + new DateTime().getMonthOfYear();
+
+                final String date_string = " "+dt.getDayOfMonth()+"/"+month+"/"+dt.getYear()+ " at "+hour+":"+minute;
+                final String date_string_today = new DateTime().getDayOfMonth()+"/"+new_month+"/"+new DateTime().getYear()+ " at "+hour+":"+minute;
                 String tv_string="";
                 if (title == null || title==""){
-                    tv_string= "No Title \n " +date_string;
+                    tv_string= " No Title \n " +date_string;
                 }else{
-                    tv_string= title+" : \n" +date_string;
+                    tv_string= " "+title+" : \n" +date_string;
                 }
                 TextView tv = new TextView(getContext());
+                final int idt =tv.generateViewId();
+                tv.setId(idt);
                 tv.setText(tv_string);
                 tv.setTextSize(28);
                 tv.setTypeface(tv.getTypeface(), Typeface.BOLD);
                 tv.setBackgroundResource(R.drawable.pressed_text_view);
                 tv.setLayoutParams(new
                         ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                tv.setOnClickListener(new View.OnClickListener() {
+
+                LinearLayout ll = new LinearLayout(getContext());
+                ll.addView(tv);
+                ll.setLayoutParams(new
+                        ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                CardView cd = new CardView(getContext());
+                cd.addView(ll);
+
+
+
+                cd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getContext(), ReminderActivity.class);
@@ -141,7 +168,7 @@ public class SuggestionTabFragment extends Fragment {
                         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
 
                         final TextView et = new TextView(getContext());
-                        et.setText("Add a reminder for "+date_string_today + " ?");
+                        et.setText(" Add a reminder for "+date_string_today + " ?");
                         et.setTextSize(28);
                         // set prompts.xml to alertdialog builder
                         alertDialogBuilder.setView(et);
@@ -164,7 +191,10 @@ public class SuggestionTabFragment extends Fragment {
 
                                 //Set the reminder
                                 ReminderHandler.setReminder(getContext(),rem);
-                                updateDatabase(rem);
+                                old_rem.setSmartReminded(true);// set the old reminder as smart reminded so it doesn't fire off again
+                                ReminderHandler.updateReminder(getContext(),old_rem);
+                                View tv = view.findViewById(idt);
+                                ((ViewGroup) tv.getParent()).removeView(tv);
 
                             }
                         }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -181,7 +211,7 @@ public class SuggestionTabFragment extends Fragment {
                     }
                 });
 
-                layout.addView(tv);
+                layout.addView(cd);
 
                 View line = new View(getContext());
                 line.setLayoutParams(new
@@ -192,17 +222,10 @@ public class SuggestionTabFragment extends Fragment {
             }
 
         }
-        Button btn = new Button(getContext());
-        btn.setText("Start OCR");
-        btn.setLayoutParams(new
-                ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        btn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                startActivity(new Intent(getActivity() , MainOcr.class));
-            }
-        });
-        layout.addView(btn);
         return view;
+    }
+
+    public void setSuggestionProperties(){
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -250,7 +273,6 @@ public class SuggestionTabFragment extends Fragment {
 
     public void updateDatabase(BaseReminder rem){
         final BaseReminder reminder = rem;
-        System.out.println(rem.getPattern()+" pattern");
         //get database reference
         DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();
         //get android device's unique id or name
@@ -285,7 +307,6 @@ public class SuggestionTabFragment extends Fragment {
                 if (check)
                     dataSnapshot.getRef().child(android_id).child("total_prompts").setValue(value);
                 ReminderPattern pattern=reminder.getPattern();
-                System.out.println("Recevied " + pattern);
                 if (pattern!=null){
                     if (pattern.equals(ReminderPattern.WEEKLY)) {
                         dataSnapshot.getRef().child(android_id).child("weekly_prompts").setValue(weekly_value);

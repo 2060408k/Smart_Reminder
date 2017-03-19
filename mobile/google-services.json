@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "871688599148-mh5cv7p265uvrk67crss21cplcg75vtf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "highway62.reminderapp",
+            "certificate_hash": "5a850dd5952914e3fe068cfdbd63e0193b411fdb"
+          }
+        },
+        {
           "client_id": "871688599148-0tomoe4nb3sru7gni6nl1g96atsutftq.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "871688599148-0tomoe4nb3sru7gni6nl1g96atsutftq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
